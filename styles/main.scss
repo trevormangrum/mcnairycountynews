@@ -1,0 +1,12 @@
+@use 'abstracts';
+@use 'layout';
+body,
+html {
+  background: map-get(abstracts.$colors, "theme", "background");
+  margin: 0;
+  padding: 0;
+  font-family: map-get(abstracts.$fonts, "primary");
+}
+
+
+
