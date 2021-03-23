@@ -1,0 +1,55 @@
+@use './variables' as v;
+//Makes an element a flex column.
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+@mixin bg-primary {
+    background: map-get(v.$colors, "theme", "primary");
+}
+@mixin bg-secondary {
+    background: map-get(v.$colors, "theme", "secondary");
+}
+@mixin bg-white {
+    background: white;
+}
+
+@mixin text-primary {
+    color: map-get(v.$colors, "text", "primary");
+}
+@mixin text-theme-primary {
+    color: map-get(v.$colors, "theme", "primary");
+}
+@mixin text-white {
+    color: white;
+}
+@mixin width-default {
+    width: 1200px;
+}
+@mixin font-family-primary {
+    font-family: map-get(v.$fonts, "primary");
+}
+//Breakpoint manager inspired by Sass Guidelines
+//https://sass-guidelin.es/#the-7-1-pattern
+//@param {String} $breakpoint - Breakpoint
+//@requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoint, $breakpoints);
+  @if $raw-query {
+    $query: if(
+       type-of($raw-query) == "string",
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+    @media #{$query} {
+        @content;
+    }
+
+  } @else {
+    @error "No value found for `#{$breakpoint}`. ";
+  }
+}

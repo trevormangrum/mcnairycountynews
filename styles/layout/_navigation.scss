@@ -1,0 +1,53 @@
+@use 'abstracts' as ab;
+.navigation {
+    @include ab.flex-column;
+    @include ab.font-family-primary;
+    z-index: 1000;
+    & > .container {
+        position:fixed;
+        width:100%;
+        top: 0;
+        left:0;
+        right:0;
+        height: auto;
+    }
+}
+.upper-nav {
+    @include ab.flex-row;
+    @include ab.bg-primary;
+    width: 100%;
+    justify-content: center;
+    & > .wrapper > a {
+        @include ab.text-white;
+        text-decoration: none;
+        margin: 0 20px;
+        &:last-child {
+            margin: 0 0 0 20px;
+        }
+    }
+}
+
+.logo {
+    height: 80px;
+    margin-right: auto;
+}
+
+.lower-nav {
+    @include ab.flex-row;
+    @include ab.bg-white;
+    font-weight:600;
+    width: 100%;
+    justify-content: center;
+    & > .wrapper > a {
+        @include ab.text-primary;
+        text-decoration: none;
+        margin: 0px 20px;
+        &:last-child {
+            margin: 0 0 0 20px;
+        }
+    }
+}
+.spacer {
+    width:100%;
+    height: 80px;
+}

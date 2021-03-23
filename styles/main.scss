@@ -1,0 +1,21 @@
+@use 'abstracts';
+@use 'layout';
+@use 'components';
+body,
+html {
+  background: map-get(abstracts.$colors, "theme", "background");
+  margin: 0;
+  padding: 0;
+  font-family: map-get(abstracts.$fonts, "primary");
+}
+
+.wrapper {
+    @include abstracts.width-default;
+    @include abstracts.flex-row;
+    justify-content:end;
+    align-items:center;
+    text-align:right;
+}
+
+
+

@@ -1,0 +1,15 @@
+@use 'abstracts' as ab;
+
+.layout-container {
+    width:100%;
+    @include ab.flex-column;
+}
+
+.layout-grid{
+    width: 1200px;
+    align-self:center;
+    display: grid;
+    grid-template-columns: 0.6fr 0.4fr;
+    grid-gap: 40px;
+}
+

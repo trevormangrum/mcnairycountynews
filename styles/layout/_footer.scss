@@ -1,0 +1,33 @@
+@use 'abstracts' as ab;
+.footer {
+    width: 100%;
+    @include ab.flex-column;
+    align-items: center;
+    @include ab.text-white;
+    @include ab.bg-secondary;
+    & > .wrapper {
+        @include ab.flex-row;
+        justify-content:space-evenly;
+        flex-wrap: wrap;
+        overflow:wrap;
+    }
+    & > .wrapper:last-child {
+        justify-content: flex-start;
+    }
+}
+.footer-section {
+    @include ab.flex-column;
+    align-items: flex-start;
+    min-height: 300px;
+} 
+.footer-link {
+    text-decoration:none;
+    @include ab.text-white;
+    filter:brightness(0.8);
+    margin: 5px 0px;
+}
+.footer-header {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+

@@ -1,16 +1,17 @@
 import Head from 'next/head'
-
-
+import Layout from "components/Layout";
+import SectionHeader from "components/SectionHeader";
 export default function Home() {
   return (
     <div>
       <Head>
-        <title>McNairyCountyNews</title>
+        <title>McNairy County News</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <h1> Hello world </h1>
-
+        <Layout>
+            <SectionHeader text="News"/>
+            <SectionHeader text="Sports"/>
+        </Layout>
     </div>
 
   )
