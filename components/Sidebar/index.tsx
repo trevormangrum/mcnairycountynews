@@ -1,10 +1,11 @@
 import React from "react";
-
+import SectionHeader from "components/SectionHeader";
 const Sidebar: React.FC = () => {
     return(
-        <div>
-            <h1>Sidebar</h1>
-        </div>
+        <aside className="sidebar">
+            <SectionHeader text="Weather" />
+            <SectionHeader text="Social Media" />
+        </aside>
     );
 }
 
