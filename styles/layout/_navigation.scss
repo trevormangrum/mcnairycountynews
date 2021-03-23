@@ -20,15 +20,16 @@
     & > .wrapper > a {
         @include ab.text-white;
         text-decoration: none;
-        margin: 20px;
+        margin: 0 20px;
         &:last-child {
             margin: 0 0 0 20px;
         }
     }
 }
-.wrapper {
-    @include ab.width-default;
-    text-align:right;
+
+.logo {
+    height: 80px;
+    margin-right: auto;
 }
 
 .lower-nav {
@@ -37,7 +38,6 @@
     font-weight:600;
     width: 100%;
     justify-content: center;
-    padding: 20px 0;
     & > .wrapper > a {
         @include ab.text-primary;
         text-decoration: none;

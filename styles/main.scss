@@ -8,5 +8,13 @@ html {
   font-family: map-get(abstracts.$fonts, "primary");
 }
 
+.wrapper {
+    @include abstracts.width-default;
+    @include abstracts.flex-row;
+    justify-content:end;
+    align-items:center;
+    text-align:right;
+}
+
 
 

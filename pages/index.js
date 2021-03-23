@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Header from "components/Header";
-
+import Layout from "components/Layout";
 
 export default function Home() {
   return (
@@ -9,9 +8,8 @@ export default function Home() {
         <title>McNairy County News</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <Header/>
-        <h1>Hello</h1>
-        
+        <Layout>
+        </Layout>
     </div>
 
   )
