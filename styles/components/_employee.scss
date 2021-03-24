@@ -1,0 +1,36 @@
+@use 'abstracts' as ab;
+
+.employee {
+    @include ab.flex-column;
+    align-items:center;
+    min-width: 300px;
+    min-height: 200px;
+    margin: 0;
+    & > img {
+        @include ab.flex-column;
+        align-items:center;
+        justify-content:center;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #eaeaea;
+    }
+}
+
+.employee-name {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.employee-position {
+    margin: 10px 0;
+    min-height: 40px;
+    text-align:center;
+}
+
+.employee-phone, .employee-email {
+    margin: 10px 0px;
+    text-decoration:none;
+    @include ab.text-theme-primary;
+}

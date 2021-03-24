@@ -1,0 +1,25 @@
+@use 'abstracts' as ab;
+.sm {
+    @include ab.flex-column;
+    width: 100%;
+    height: 80px;
+    margin: 20px 0;
+    justify-content:center;
+    align-items:center;
+    &:first-child{
+        margin-top: 0;
+    }
+}
+
+.sm-icon {
+    font-size: 36px;
+    color:white;
+}
+
+.sm-twt {
+    background:#1DA1F2;
+}
+.sm-fb {
+    background: #4267B2;
+}
+

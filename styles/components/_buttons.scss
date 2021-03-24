@@ -1,0 +1,14 @@
+@use 'abstracts' as ab;
+
+.button {
+    @include ab.bg-primary;
+    @include ab.text-white;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor:pointer;
+}
+

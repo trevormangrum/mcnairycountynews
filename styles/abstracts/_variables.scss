@@ -14,3 +14,7 @@ $fonts: (
   primary: #{"Asap",
   sans-serif},
 );
+
+$breakpoints: (
+        'medium': (min-width: 1000px)
+);

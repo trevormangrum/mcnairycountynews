@@ -28,7 +28,8 @@
     color: white;
 }
 @mixin width-default {
-    width: 1200px;
+    width: 100%;
+    max-width: 1200px;
 }
 @mixin font-family-primary {
     font-family: map-get(v.$fonts, "primary");
@@ -38,7 +39,7 @@
 //@param {String} $breakpoint - Breakpoint
 //@requires $breakpoints
 @mixin respond-to($breakpoint) {
-  $raw-query: map-get($breakpoint, $breakpoints);
+  $raw-query: map-get(v.$breakpoints, $breakpoint);
   @if $raw-query {
     $query: if(
        type-of($raw-query) == "string",
