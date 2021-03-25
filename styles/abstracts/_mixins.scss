@@ -1,4 +1,5 @@
 @use './variables' as v;
+@use 'sass:color';
 //Makes an element a flex column.
 @mixin flex-column {
     display: flex;
@@ -33,6 +34,11 @@
 }
 @mixin font-family-primary {
     font-family: map-get(v.$fonts, "primary");
+}
+
+
+@mixin darken-bg($color) {
+    background: color.scale($color, $lightness: -30%);
 }
 //Breakpoint manager inspired by Sass Guidelines
 //https://sass-guidelin.es/#the-7-1-pattern

@@ -1,27 +1,36 @@
 @use 'abstracts' as ab;
 
 .layout-container {
-    width:100%;
-    @include ab.flex-column;
+  width: 100%;
+  min-height: 100vh;
+  @include ab.flex-column;
 }
 
-.layout-grid{
-    @include ab.width-default;
-    align-self:center;
-    display: grid;
-    grid-gap: 40px;
-    justify-content:center;
-    grid-template-columns: 0.9fr;
-    @include ab.respond-to('medium') {
-        grid-template-columns: 0.6fr 0.4fr;
-    }
+.layout-grid {
+  @include ab.width-default;
+  align-self: center;
+  display: grid;
+  grid-gap: 40px;
+  justify-content: center;
+  grid-template-columns: 0.9fr;
+  margin-bottom: 40px;
+  @include ab.respond-to("medium") {
+    grid-template-columns: 0.6fr 0.4fr;
+  }
+}
+.content {
+  @include ab.flex-column;
 }
 
 .sidebar {
-    @include ab.flex-column;
-    //TODO: This can be added only if there's a page title
-
+  @include ab.flex-column;
+  & > p {
+    margin-top: 0;
+  }
+  & > a {
+    margin-bottom: 20px;
+  }
 }
 .sidebar-margin {
-    margin-top: 89px;
+  margin-top: 89px;
 }

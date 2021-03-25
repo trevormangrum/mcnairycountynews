@@ -1,0 +1,13 @@
+@use 'abstracts' as ab;
+
+.digital-ad {
+  @include ab.flex-column;
+  background: #eaeaea;
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  & > p {
+    @include ab.text-primary;
+  }
+}

@@ -3,12 +3,19 @@
 .button {
     @include ab.bg-primary;
     @include ab.text-white;
-    padding: 0.5rem;
+    margin: 20px 0;
+    padding: 1.2rem;
     border: none;
     outline: none;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;
+    text-decoration:none;
+    text-align:center; 
     cursor:pointer;
+    transition: 0.4s ease;
+    &:hover {
+        @include ab.darken-bg(map-get(ab.$colors, "theme", "primary"));
+    }
 }
 
