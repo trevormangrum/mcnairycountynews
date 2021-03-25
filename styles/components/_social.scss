@@ -1,25 +1,31 @@
 @use 'abstracts' as ab;
 .sm {
-    @include ab.flex-column;
-    width: 100%;
-    height: 80px;
-    margin: 20px 0;
-    justify-content:center;
-    align-items:center;
-    &:first-child{
-        margin-top: 0;
-    }
+  @include ab.flex-column;
+  width: 100%;
+  height: 80px;
+  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease;
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .sm-icon {
-    font-size: 36px;
-    color:white;
+  font-size: 36px;
+  color: white;
 }
 
 .sm-twt {
-    background:#1DA1F2;
+  background: #1da1f2;
+  &:hover {
+    @include ab.darken-bg(#1da1f2);
+  }
 }
 .sm-fb {
-    background: #4267B2;
+  background: #4267b2;
+  &:hover {
+    @include ab.darken-bg(#4267b2);
+  }
 }
-

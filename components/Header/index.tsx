@@ -1,6 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import { useState } from "react";
+import MobileNavbar from "components/MobileNavbar";
 const Header: React.FC = () => {
+  const [open, setOpen] = useState(false);
   return (
     <header className="navigation">
       <div className="container">
@@ -31,12 +34,6 @@ const Header: React.FC = () => {
             <Link href="/">
               <a href="/">Home</a>
             </Link>
-            <Link href="/categories/news">
-              <a href="/categories/news">News</a>
-            </Link>
-            <Link href="/categories/sports">
-              <a href="/categories/sports">Sports</a>
-            </Link>
             <Link href="#">
               <a href="">Public Notices</a>
             </Link>
@@ -46,12 +43,13 @@ const Header: React.FC = () => {
             <Link href="/subscribe">
               <a href="/subscribe">Subscribe</a>
             </Link>
-            <div className="nav-button">
+            <div className="nav-button" onClick={() => setOpen(!open)}>
               <div></div>
               <div></div>
               <div></div>
             </div>
           </div>
+          <MobileNavbar open={open} />
         </nav>
       </div>
       <div className="spacer"></div>
