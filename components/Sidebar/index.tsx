@@ -7,6 +7,7 @@ interface Props {
   pageTitle: boolean;
 }
 const Sidebar: React.FC<Props> = ({ pageTitle }) => {
+  //TODO: Load advertisements.
   return (
     <aside className={`${"sidebar"} ${pageTitle ? "sidebar-margin" : ""}`}>
       <SectionHeader text="Weather" />

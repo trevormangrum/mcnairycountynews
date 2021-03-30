@@ -1,0 +1,30 @@
+@use 'abstracts' as ab;
+
+.input-group {
+  @include ab.flex-column;
+  & > input,
+  textarea,
+  select {
+    line-height: 2rem;
+    @include ab.font-family-primary;
+    @include ab.text-primary;
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px #eaeaea;
+  }
+  & > label {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 600;
+  }
+  & > textarea {
+    resize: vertical;
+  }
+  & > select > option {
+    @include ab.font-family-primary;
+    @include ab.text-primary;
+  }
+}
