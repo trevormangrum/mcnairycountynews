@@ -39,6 +39,12 @@ export default function SubscribePage() {
           labelText="Email Address"
         />
         <InputGroup
+          inputName="dob"
+          inputType="date"
+          inputPlaceholder="Date of Birth"
+          labelText="Date of Birth"
+        />
+        <InputGroup
           inputName="address"
           inputType="text"
           inputPlaceholder="Address"
