@@ -1,0 +1,54 @@
+@use 'abstracts' as ab;
+
+.sub-options {
+  @include ab.flex-column;
+  align-items: center;
+  justify-content: center;
+  @include ab.respond-to("medium") {
+    @include ab.flex-row;
+  }
+}
+
+.sub-body {
+  @include ab.bg-white;
+  @include ab.flex-column;
+  width: 300px;
+  min-height: 200px;
+  margin: 10px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0px 0px 3px #eaeaea;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-width: 4px;
+  &:nth-child(1) {
+    border-top-color: map-get(ab.$colors, "theme", "primary");
+  }
+  &:nth-child(2) {
+    border-top-color: green;
+  }
+}
+
+.sub-pricing {
+  min-height: 60px;
+  @include ab.flex-column;
+  & > div {
+    @include ab.flex-row;
+    margin: 5px 0;
+  }
+  & > div > span:last-child {
+    margin-left: auto;
+    @include ab.text-theme-primary;
+    font-weight: 600;
+  }
+}
+.sub-text {
+  @include ab.flex-column;
+  width: 90%;
+  min-height: 400px;
+  align-self: center;
+  & > h2 {
+    font-weight: 400;
+    text-align: center;
+  }
+}
