@@ -3,7 +3,9 @@ import Layout from "components/Layout";
 import Head from "next/head";
 import { FaFax, FaPhone, FaMapMarker, FaEnvelope } from "react-icons/fa";
 import SectionHeader from "components/SectionHeader";
+
 import InputGroup from "components/InputGroup";
+
 export default function ContactPage() {
   const options = {
     pageTitle: true,
@@ -18,7 +20,9 @@ export default function ContactPage() {
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.841019246642!2d-88.5950632071757!3d35.1658029642024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887dccf9bca448e3%3A0xe76698f8a4d361ed!2sMcNairy%20County%20News!5e0!3m2!1sen!2sus!4v1616616787974!5m2!1sen!2sus"
         className="map"
       ></iframe>
+
       <SectionHeader text="Our Contact Information" />
+
       <div className="contact-info">
         <FaMapMarker className="contact-icon" />
         <span>252 Mulberry Avenue, Selmer TN, 38375</span>
