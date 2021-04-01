@@ -27,7 +27,9 @@ const MobileNavbar: React.FC<Props> = ({ open }) => {
       <Link href="/archives">
         <a href="/archives">Archives</a>
       </Link>
-      <a href="https://www.tnpublicnotice.com/">Public Notices</a>
+      <a target="_blank" rel="noopener" href="https://www.tnpublicnotice.com/">
+        Public Notices
+      </a>
       <Link href="#">
         <a href="">Obituaries</a>
       </Link>
