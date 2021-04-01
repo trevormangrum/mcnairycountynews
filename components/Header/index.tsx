@@ -34,6 +34,7 @@ const Header: React.FC = () => {
             <Link href="/">
               <a href="/">Home</a>
             </Link>
+<<<<<<< HEAD
             <a
               target="_blank"
               rel="noopener"
@@ -41,6 +42,10 @@ const Header: React.FC = () => {
             >
               Public Notices
             </a>
+=======
+            <a href="https://www.tnpublicnotice.com/">Public Notices</a>
+
+>>>>>>> 569b7608057bf008a45c3e704cc1eacb3aaeef1e
             <Link href="#">
               <a href="">Obituaries</a>
             </Link>
