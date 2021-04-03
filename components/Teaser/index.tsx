@@ -1,5 +1,6 @@
 import React from "react";
 import { Article } from "utils/types";
+import Link from "next/link";
 interface Props {
   article: Article;
   large: boolean;
@@ -7,11 +8,24 @@ interface Props {
 const Teaser: React.FC<Props> = ({ article, large }) => {
   return (
     <figure className={`teaser ${large ? "teaser-lg" : ""}`}>
-      <img src={article.image.url} alt={article.title} />
+      <Link href={`/teasers/${article.title.toLowerCase().replace(/ /g, "-")}`}>
+        <img src="#" alt={article.title} />
+      </Link>
       <div>
-        <h2></h2>
-        <div></div>
+        <h2>{article.title}</h2>
+        <p>{article.posted}</p>
+        <div className="teaser-categories">
+          {article.categories.map(category => {
+            return (
+              <span className="teaser-category" data-category={category}>
+                {category}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </figure>
   );
 };
+
+export default Teaser;
