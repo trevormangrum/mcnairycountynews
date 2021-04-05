@@ -12,6 +12,7 @@
   & > img {
     @include ab.flex-column;
     justify-content: center;
+    cursor: pointer;
     align-items: center;
     width: 40%;
     background: #eaeaea;

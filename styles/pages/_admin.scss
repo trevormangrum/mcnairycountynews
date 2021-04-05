@@ -1,0 +1,18 @@
+@use 'abstracts' as ab;
+.admin-page {
+  @include ab.flex-column;
+  min-height: 100vh;
+}
+
+.admin-wrapper {
+  @include ab.width-default;
+  align-self: center;
+  & > h1 {
+    text-align: center;
+  }
+}
+.admin-links {
+    @include ab.flex-row;
+    flex-wrap: wrap;
+    justify-content:center;
+}

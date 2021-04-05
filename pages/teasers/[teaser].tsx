@@ -1,15 +1,15 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import {Article} from "utils/types";
+import { Article } from "utils/types";
 import SectionHeader from "components/SectionHeader";
-import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Layout from "components/Layout";
 import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
 import { GetStaticPropsContext } from "next";
 interface Props {
   teaser: Article;
-};
+}
 const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
   const router = useRouter();
   if (router.isFallback) {
@@ -19,11 +19,18 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
     <Layout>
       {teaser && (
         <div>
+          <img
+            src={teaser.image ? teaser.image.url : "#"}
+            className="teaser-page-image"
+            alt={teaser.title}
+          />
           <h1>{teaser.title}</h1>
-            {documentToReactComponents(teaser.body.json)}
+            <p>{new Date(teaser.posted).toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"})}</p>
+          <p>Written by: {teaser.author}</p>
+
+          {documentToReactComponents(teaser.body.json)}
         </div>
       )}
-        <SectionHeader text="Suggested Articles" />
     </Layout>
   );
 };

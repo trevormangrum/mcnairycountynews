@@ -5,15 +5,17 @@ interface Props {
   article: Article;
   large: boolean;
 }
+//TODO: Fix dates.
 const Teaser: React.FC<Props> = ({ article, large }) => {
+    const date = new Date(article.posted);
   return (
     <figure className={`teaser ${large ? "teaser-lg" : ""}`}>
       <Link href={`/teasers/${article.title.toLowerCase().replace(/ /g, "-")}`}>
-        <img src="#" alt={article.title} />
+          <img src={article.image ? article.image.url : "#"} alt={article.title} />
       </Link>
       <div>
         <h2>{article.title}</h2>
-        <p>{article.posted}</p>
+        <p>{date.toLocaleString()}</p>
         <div className="teaser-categories">
           {article.categories.map(category => {
             return (
