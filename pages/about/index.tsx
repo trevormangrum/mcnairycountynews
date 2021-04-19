@@ -21,8 +21,8 @@ export default function AboutPage() {
             <SectionHeader text="Our Team"/>
             <div className="employee-grid">
                 <Employee name="Melanie King" image="melanie.jpg" position="Owner/Publisher/Advertising Sales" email="melanie@mcnairycountynews.com" phone="7316979149" / >
-                <Employee name="Suzanne Ingle" image="#" position="Office Manager/Graphics Design and Layout" email="suzanne@mcnairycountynews.com" />
-                <Employee name="Russell Ingle" email="news@mcnairycountynews.com" image="#" position="Staff Writer/Reporter" />
+                <Employee name="Suzanne Ingle" image="suzanne.jpg" position="Office Manager/Graphics Design and Layout" email="suzanne@mcnairycountynews.com" />
+                <Employee name="Russell Ingle" email="news@mcnairycountynews.com" image="russell.jpg" position="Staff Writer/Reporter" />
                 <Employee name="Ethan Huggins" email="ethanhuggins751@hotmail.com" position="Sports Writer" image="#" />
                 <Employee name="Tom Evans" image="#" position="Founder/Sports Writer" email="tom@mcnairycountynews.com" />
                 

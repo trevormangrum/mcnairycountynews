@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         <nav className="lower-nav">
           <div className="wrapper">
             <Link href="/">
-              <img src="mcnsvg.svg" className="logo" />
+              <img src="/mcnsvg.svg" className="logo" />
             </Link>
             <Link href="/">
               <a href="/">Home</a>

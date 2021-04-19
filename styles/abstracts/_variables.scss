@@ -7,6 +7,12 @@ $colors: (
   ),
   text: (
     primary: #535353,
+    sports: #0000cc,
+    school: #a8e0a4,
+  ),
+  categorybg: (
+    sports: #b1b1f0,
+    school: #287622,
   ),
 );
 
@@ -16,5 +22,7 @@ $fonts: (
 );
 
 $breakpoints: (
-        'medium': (min-width: 1000px)
+  "medium": (
+    min-width: 1000px,
+  ),
 );

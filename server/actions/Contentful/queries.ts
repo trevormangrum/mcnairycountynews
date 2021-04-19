@@ -1,23 +1,50 @@
 import { gql } from "@apollo/client";
+
 export default {
   articles: {
-    createArticle: gql`query createArticle {
-        }`,
-    updateArticle: gql`query updateArticle {
-        }`,
-    archiveArticle: gql`query archiveArticle {
-        }`,
     getTeasers: gql`
       query getTeasers {
-        articlesCollction(where: { teaser_contains: "true" }) {
+        articleCollection(where: { teaser: true }) {
           items {
             title
             posted
+            image {
+                url
+            }
             categories
+          }
+        }
+      }
+    `,
+    getTeaserByTitle: gql`
+      query getTeaserByTitle($title: String!) {
+        articleCollection(where: { title_contains: $title }, limit: 1) {
+          items {
+            title
+            author
+            image {
+                url
+            }
+            posted
+            body {
+              json
+            }
           }
         }
       }
     `,
   },
   subscribers: {},
+  ads: {
+    getAds: gql`
+      query getAds {
+        adCollection {
+          items {
+            image
+            url
+          }
+        }
+      }
+    `,
+  },
 };

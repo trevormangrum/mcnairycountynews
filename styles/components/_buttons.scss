@@ -17,5 +17,9 @@
     &:hover {
         @include ab.darken-bg(map-get(ab.$colors, "theme", "primary"));
     }
+    &-admin {
+        margin: 20px;
+        min-width: 200px;
+    }
 }
 

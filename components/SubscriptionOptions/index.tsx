@@ -22,6 +22,7 @@ const SubscriptionOptions: React.FC = () => {
             Receive a copy of McNairy County News weekly by mail, a day before
             the public release.
           </p>
+          <p>Optionally comes with an email subscription at no extra cost.</p>
         </div>
       </div>
       <div className="sub-body">
@@ -36,7 +37,6 @@ const SubscriptionOptions: React.FC = () => {
           </div>
           <h3>Features</h3>
           <p>Receive McNairy County News by email every week.</p>
-          <p>Optionally comes with a mailed subscription at no extra cost.</p>
         </div>
       </div>
     </div>
