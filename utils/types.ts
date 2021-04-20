@@ -9,3 +9,9 @@ export interface Article {
   teaser?: boolean;
   body?: string;
 }
+export interface EmailMessage {
+  email: string;
+  name: string;
+  body: string;
+  subject:string;
+}

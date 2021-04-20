@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "components/Layout";
+import Loader from "components/Loader";
 import Head from "next/head";
 import { FaFax, FaPhone, FaMapMarker, FaEnvelope } from "react-icons/fa";
 import SectionHeader from "components/SectionHeader";
@@ -7,10 +8,25 @@ import SectionHeader from "components/SectionHeader";
 import InputGroup from "components/InputGroup";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const options = {
     pageTitle: true,
     pageTitleText: "Contact Us",
   };
+
+  const handleSubmit = async  (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const fd = new FormData(e.target as HTMLFormElement);
+    const response = await fetch('/api/contact', {
+      method: "POST",
+      body: JSON.stringify(Object.fromEntries(fd)),
+    });
+    const data = await response.json();
+    if(data) {
+      setIsSubmitting(false);
+    }
+  }
   return (
     <Layout options={options}>
       <Head>
@@ -52,17 +68,11 @@ export default function ContactPage() {
         <span>(Fax)</span>
       </div>
 
-      <form>
+      <form onSubmit={handleSubmit} >
         <SectionHeader text="Contact" />
         <p>
           Have questions or concerns? Let us know! We'd love to hear from you.
         </p>
-        <InputGroup
-          inputPlaceholder="Full Name"
-          inputName="name"
-          inputType="text"
-          labelText="Full Name"
-        />
         <InputGroup
           inputPlaceholder="Email Address"
           inputName="email"
@@ -77,11 +87,14 @@ export default function ContactPage() {
         />
         <InputGroup
           inputPlaceholder="Message body"
-          inputName="message"
+          inputName="body"
           inputType="textarea"
           labelText="Message"
         />
-        <button className="button">Send Message</button>
+        <button className="button" disabled={isSubmitting}>Send Message</button>
+        {isSubmitting && (
+          <Loader/>
+        )}
       </form>
     </Layout>
   );
