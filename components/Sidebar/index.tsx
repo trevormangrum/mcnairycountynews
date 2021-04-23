@@ -14,7 +14,7 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
       <DigitalAdPlaceholder />
       <SectionHeader text="Social Media" />
       <SocialMediaButton media="fb" />
-      <SocialMediaButton media="twt" />
+      <SocialMediaButton media="ig" />
       <DigitalAdPlaceholder />
       <SectionHeader text="Subscribe" />
       <p>Subscribe to the McNairy County News!</p>

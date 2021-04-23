@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 interface Props {
   media: string;
 }
@@ -17,14 +17,14 @@ const SocialMediaButton: React.FC<Props> = ({ media }) => {
           <FaFacebook className="sm-icon" />
         </a>
       )}
-      {media === "twt" && (
+      {media === "ig" && (
         <a
           target="_blank"
           rel="noopener"
           href="https://twitter.com/McNairyNews"
-          className="sm sm-twt"
+          className="sm sm-ig"
         >
-          <FaTwitter className="sm-icon" />
+          <FaInstagram className="sm-icon" />
         </a>
       )}
     </div>

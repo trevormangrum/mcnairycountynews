@@ -25,7 +25,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
             alt={teaser.title}
           />
           <h1>{teaser.title}</h1>
-            <p>{new Date(teaser.posted).toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"})}</p>
+          <p>{new Date(teaser.posted).toLocaleDateString('en-US', { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric"})}</p>
           <p>Written by: {teaser.author}</p>
 
           {documentToReactComponents(teaser.body.json)}

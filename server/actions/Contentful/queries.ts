@@ -9,7 +9,7 @@ export default {
             title
             posted
             image {
-                url
+              url
             }
             categories
           }
@@ -23,7 +23,7 @@ export default {
             title
             author
             image {
-                url
+              url
             }
             posted
             body {
@@ -42,6 +42,20 @@ export default {
           items {
             image
             url
+          }
+        }
+      }
+    `,
+  },
+  archives: {
+    getArchivedPapers: gql`
+      query getArchivedPapers {
+        archivesCollection {
+          items {
+            date
+            pdf {
+              url
+            }
           }
         }
       }

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
+import InputGroup from "components/InputGroup";
 export default function LoginPage() {
     return (
         <main className="layout-container login-container">
@@ -8,10 +8,8 @@ export default function LoginPage() {
                 <form className="login-box">
                     <h1>Login</h1>
                     <Link href='/'><a href='/'>Go Back</a></Link>
-                    <label htmlFor="email">Email Address</label>
-                    <input type="email" name="email" placeholder="Email Address" />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" placeholder="Password" />
+                    <InputGroup inputType="text" inputName="username" inputPlaceholder="username" labelText="Username" />
+                    <InputGroup inputType="password" inputName="pass" inputPlaceholder="Password" labelText="Password" />
                     <button className="button" type='submit'>Login</button>
                 </form>
             </div>

@@ -17,10 +17,10 @@
   color: white;
 }
 
-.sm-twt {
-  background: #1da1f2;
+.sm-ig {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
   &:hover {
-    @include ab.darken-bg(#1da1f2);
+    filter: brightness(0.8);
   }
 }
 .sm-fb {
