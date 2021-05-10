@@ -7,7 +7,7 @@ interface Props {
 }
 //TODO: Fix dates.
 const Teaser: React.FC<Props> = ({ article, large }) => {
-    const date = new Date(article.posted);
+  const date = new Date(article.posted).toLocaleString('en-US', { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric"});
   return (
     <figure className={`teaser ${large ? "teaser-lg" : ""}`}>
       <Link href={`/teasers/${article.title.toLowerCase().replace(/ /g, "-")}`}>
@@ -15,16 +15,7 @@ const Teaser: React.FC<Props> = ({ article, large }) => {
       </Link>
       <div>
         <h2>{article.title}</h2>
-        <p>{date.toLocaleString()}</p>
-        <div className="teaser-categories">
-          {article.categories.map(category => {
-            return (
-              <span className="teaser-category" data-category={category}>
-                {category}
-              </span>
-            );
-          })}
-        </div>
+        <p>{date}</p>
       </div>
     </figure>
   );
