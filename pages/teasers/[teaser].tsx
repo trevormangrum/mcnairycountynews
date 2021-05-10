@@ -1,16 +1,16 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Article } from "utils/types";
-import SectionHeader from "components/SectionHeader";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Layout from "components/Layout";
 import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
 import { GetStaticPropsContext } from "next";
+import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
 interface Props {
   teaser: Article;
 }
 const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
+  console.log(teaser);
   const router = useRouter();
   if (router.isFallback) {
     return <h1>Loading...</h1>;
@@ -25,10 +25,23 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
             alt={teaser.title}
           />
           <h1>{teaser.title}</h1>
-          <p>{new Date(teaser.posted).toLocaleDateString('en-US', { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric"})}</p>
+          <p>
+            {new Date(teaser.posted as string).toLocaleDateString("en-US", {
+              timeZone: "UTC",
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
           <p>Written by: {teaser.author}</p>
+          <DigitalAdPlaceholder />
+          <article
+            className="blogContent"
+            dangerouslySetInnerHTML={{ __html: teaser.body as string }}
+          ></article>
 
-          {documentToReactComponents(teaser.body.json)}
+          <DigitalAdPlaceholder />
         </div>
       )}
     </Layout>

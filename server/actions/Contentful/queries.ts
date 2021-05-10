@@ -4,13 +4,18 @@ export default {
   articles: {
     getTeasers: gql`
       query getTeasers {
-        articleCollection(where: { teaser: true }) {
+        articleCollection(
+          where: { teaser: true }
+          limit: 12
+          order: [posted_DESC]
+        ) {
           items {
+            sys {
+              id
+            }
             title
             posted
-            image {
-              url
-            }
+            image
             categories
           }
         }
@@ -22,13 +27,9 @@ export default {
           items {
             title
             author
-            image {
-              url
-            }
+            image
             posted
-            body {
-              json
-            }
+            body
           }
         }
       }

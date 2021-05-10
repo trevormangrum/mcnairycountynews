@@ -21,7 +21,7 @@ const SocialMediaButton: React.FC<Props> = ({ media }) => {
         <a
           target="_blank"
           rel="noopener"
-          href="https://twitter.com/McNairyNews"
+          href="https://www.instagram.com/mcnairycountynews/"
           className="sm sm-ig"
         >
           <FaInstagram className="sm-icon" />

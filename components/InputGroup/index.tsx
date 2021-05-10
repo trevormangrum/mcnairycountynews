@@ -4,21 +4,38 @@ interface Props {
   labelText: string;
   inputName: string;
   inputPlaceholder: string;
+  value: any;
+  handleChange: any;
 }
 const InputGroup: React.FC<Props> = ({
   inputType,
   labelText,
   inputPlaceholder,
   inputName,
+  value,
+  handleChange,
 }) => {
   return (
     <div className="input-group">
       <label htmlFor={inputName}>{labelText}</label>
-      {inputType != "textarea" && inputType != "select" && (
+      {inputType != "textarea" &&
+        inputType != "select" &&
+        inputType != "file" && (
+          <input
+            type={inputType}
+            name={inputName}
+            placeholder={inputPlaceholder}
+            value={value || null}
+            onChange={handleChange}
+            required
+          />
+        )}
+      {inputType == "file" && (
         <input
           type={inputType}
           name={inputName}
           placeholder={inputPlaceholder}
+          onChange={handleChange}
           required
         />
       )}
