@@ -4,8 +4,8 @@ interface Props {
   labelText: string;
   inputName: string;
   inputPlaceholder: string;
-  value: any;
-  handleChange: any;
+  value?: any;
+  handleChange?: any;
 }
 const InputGroup: React.FC<Props> = ({
   inputType,

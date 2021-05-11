@@ -3,13 +3,12 @@ import { useRouter } from "next/router";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import SectionHeader from "components/SectionHeader";
-import InputGroup from "components/InputGroup";
 import { useQuery } from "@apollo/client";
 import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
 import AdminItem from "components/AdminItem";
 import Head from "next/head";
-import { Article } from "utils/types";
+import { Article, Archive } from "utils/types";
 
 export default function AdminWorkPage() {
   const router = useRouter();
@@ -38,9 +37,8 @@ export default function AdminWorkPage() {
   return (
     <main className="admin-page">
       <Head>
-        <title>Admin Portal | McNairy County News</title>
+        <title>Admin Actions | McNairy County News</title>
       </Head>
-      <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css" />
       <Header />
       <div className="admin-wrapper">
         <SectionHeader
@@ -58,7 +56,7 @@ export default function AdminWorkPage() {
               return (
                 <AdminItem
                   text={article.title}
-                  id={article.sys.id}
+                  id={article.sys?.id}
                   method={method as string}
                   type={type}
                   handleSubmit={handleSubmit}
@@ -70,7 +68,7 @@ export default function AdminWorkPage() {
             type == "archives" &&
             method != "add" &&
             /* Display a list of archives with a button that performs an action based on method. */
-            data.archivesCollection?.items.map(archive => {
+            data.archivesCollection?.items.map((archive: Archive) => {
               return (
                 <AdminItem
                   text={archive.date}

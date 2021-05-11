@@ -1,5 +1,5 @@
 import { createClient } from "contentful-management";
-import { Article } from "utils/types";
+import { Article, Archive } from "utils/types";
 import { File } from "formidable";
 import fs from "fs";
 const client = createClient({
@@ -8,7 +8,7 @@ const client = createClient({
 
 /**
  * Creates a new article and uploads it to Contentful.
- * @param article
+ * @param article The article object containing information to be used in creation.
  */
 export const addArticle = async (article: Article) => {
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
@@ -38,16 +38,19 @@ export const addArticle = async (article: Article) => {
   await newArticle.publish();
   if (!newArticle) throw new Error("Error creating new article.");
 };
-
+/**
+ * Update article information.
+ * @params Article containing updated information.
+ */
 export const updateArticle = async () => {
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
 };
 /**
  * Delete an article by it's system id in Contentful.
- * @param id The id of the article to be deleted.
+ * @param id The id of the article/archive to be deleted.
  */
-export const deleteArticle = async (id: string) => {
+export const deleteEntry = async (id: string) => {
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
   const entry = await environment.getEntry(id);
@@ -55,11 +58,16 @@ export const deleteArticle = async (id: string) => {
     const image = entry.fields.image["en-US"];
     deleteAssetByID(image.assetID);
   }
+  if (entry.fields.pdf) {
+    const pdf = entry.fields.pdf["en-US"];
+    deleteAssetByID(pdf.assetID);
+  }
   await entry.unpublish();
   await entry.delete();
 };
 
 /**
+ * Deletes an asset in Contentful by ID
  * @param ID ID of the Contentful Asset to be deleted.
  */
 export async function deleteAssetByID(ID: string) {
@@ -72,43 +80,65 @@ export async function deleteAssetByID(ID: string) {
   await asset.delete();
 }
 /**
- * @param image Image file of type Formidable.File to be uploaded.
+ * @param asset file of type Formidable.File to be uploaded.
  * @returns An object containing the uploaded image's asset ID and url.
  * @throws  Error if resource creation is unsuccessful
  */
-export async function uploadImage(image: File) {
+export async function uploadAsset(asset: File) {
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
-  let asset = await environment.createAssetFromFiles({
+  let newAsset = await environment.createAssetFromFiles({
     fields: {
       title: {
-        "en-US": image.name,
+        "en-US": asset.name as string,
       },
       description: {
         "en-US": "Image description",
       },
       file: {
         "en-US": {
-          contentType: image.type,
-          fileName: image.name,
-          file: fs.readFileSync(image.path),
+          contentType: asset.type as string,
+          fileName: asset.name as string,
+          file: fs.readFileSync(asset.path),
         },
       },
     },
   });
 
-  asset = await asset.processForAllLocales();
-  asset = await asset.publish();
+  newAsset = await newAsset.processForAllLocales();
+  newAsset = await newAsset.publish();
 
-  if (!asset) {
+  if (!newAsset) {
     throw new Error("Asset creation unsuccessful.");
   } else {
     //Delete image from local storage before ending upload
-    fs.unlinkSync(image.path);
+    fs.unlinkSync(asset.path);
     //The url is returned without the http/https, so it's added here.
     return {
-      url: "https:" + asset.fields.file["en-US"].url,
-      assetID: asset.sys.id,
+      url: "https:" + newAsset.fields.file["en-US"].url,
+      assetID: newAsset.sys.id,
     };
   }
 }
+
+/**
+ * Add to archives.
+ * @params archive archive object containing the data to be used in archive creation.
+ * @throws an error if creation is unsuccessful.
+ */
+export const addArchive = async (archive: Archive) => {
+  const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
+  const environment = await space.getEnvironment("master");
+  const newArchive = await environment.createEntry("archives", {
+    fields: {
+      date: {
+        "en-US": archive.date,
+      },
+      pdf: {
+        "en-US": archive.pdf,
+      },
+    },
+  });
+  await newArchive.publish();
+  if (!newArchive) throw new Error("Error creating new article.");
+};

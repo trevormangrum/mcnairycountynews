@@ -1,9 +1,9 @@
 import React from "react";
 interface Props {
-  text: string;
+  text?: string;
   method: string;
   type: string;
-  id: string;
+  id?: string;
   handleSubmit: any;
 }
 const AdminItem: React.FC<Props> = ({
@@ -18,7 +18,7 @@ const AdminItem: React.FC<Props> = ({
       {type == "articles" && <h2>{text}</h2>}
       {type == "archives" && (
         <h2>
-          {new Date(text).toLocaleString("en-US", {
+          {new Date(text as string).toLocaleString("en-US", {
             timeZone: "UTC",
             year: "numeric",
             month: "long",
@@ -38,7 +38,7 @@ const AdminItem: React.FC<Props> = ({
           type="button"
           className="button"
           onClick={(e: React.SyntheticEvent) =>
-            handleSubmit(e, `/api/admin/${type}/${method}?id=${id}`, type)
+            handleSubmit(e, `/api/admin/entries/delete?id=${id}`, type)
           }
         >
           {method}

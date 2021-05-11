@@ -53,10 +53,11 @@ export default {
       query getArchivedPapers {
         archivesCollection {
           items {
-            date
-            pdf {
-              url
+            sys {
+              id
             }
+            date
+            pdf
           }
         }
       }

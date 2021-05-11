@@ -1,3 +1,5 @@
+import { StringifyOptions } from "node:querystring";
+
 export interface Article {
   sys?: {
     id?: string;
@@ -6,7 +8,7 @@ export interface Article {
   author?: string;
   posted?: string;
   categories?: string[];
-  image?: ContentfulImage;
+  image?: ContentfulAsset;
   teaser?: boolean;
   body?: string;
 }
@@ -17,7 +19,15 @@ export interface EmailMessage {
   subject: string;
 }
 
-export interface ContentfulImage {
+export interface ContentfulAsset {
   assetID: string;
   url: string;
+}
+
+export interface Archive {
+  sys?: {
+    id: string;
+  };
+  date?: string;
+  pdf?: ContentfulAsset;
 }

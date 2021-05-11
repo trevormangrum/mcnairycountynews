@@ -4,6 +4,7 @@ import InputGroup from "components/InputGroup";
 import { useQuery } from "@apollo/client";
 import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
+import { Archive } from "utils/types";
 export default function archivesPage() {
   const { loading, data, error } = useQuery(
     queries.archives.getArchivedPapers,
@@ -24,11 +25,13 @@ export default function archivesPage() {
         labelText="Search"
         inputPlaceholder="Search for archives here..."
       />
-      {sortedArchives && !loading && !error &&
-        sortedArchives.map(archive => {
+      {sortedArchives &&
+        !loading &&
+        !error &&
+        sortedArchives.map((archive: Archive) => {
           return (
-            <a rel="noopener" target="_blank" href={archive.pdf.url}>
-              {new Date(archive.date).toLocaleString("en-US", {
+            <a rel="noopener" target="_blank" href={archive.pdf?.url}>
+              {new Date(archive.date as string).toLocaleString("en-US", {
                 timeZone: "UTC",
                 year: "numeric",
                 month: "long",
