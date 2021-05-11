@@ -1,5 +1,10 @@
 import React from "react";
 import InputGroup from "components/InputGroup";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import SectionHeader from "components/SectionHeader";
+import Loader from "components/Loader";
+import archivesPage from "pages/archives";
 interface IFormValues {
   date?: string | Date | undefined;
   pdf: File | Blob | undefined;
@@ -35,6 +40,10 @@ export default function CreateArchivePage() {
     if (archiveValues.submissionError) {
       setArchiveValues({ ...archiveValues, ["submissionError"]: false });
     }
+    if (!archiveValues.date || !archiveValues.pdf) {
+      setArchiveValues({ ...archiveValues, ["submissionError"]: true });
+      return;
+    }
 
     const fd = new FormData();
     let key: string;
@@ -59,26 +68,44 @@ export default function CreateArchivePage() {
   };
 
   return (
-    <div>
-      <InputGroup
-        inputType="date"
-        inputName="date"
-        inputPlaceholder="mm-dd-yyyy"
-        labelText="Paper Date"
-        value={archiveValues.date}
-        handleChange={handleArchiveData}
-      />
-      <InputGroup
-        inputType="file"
-        inputName="pdf"
-        inputPlaceholder="Paper PDF"
-        labelText="Paper PDF"
-        value={archiveValues.pdf}
-        handleChange={handleArchiveData}
-      />
-      <button type="submit" onClick={handleSubmit} className="button">
-        Add to Archives
-      </button>
-    </div>
+    <main className="admin-page">
+      <Header />
+      <div className="admin-wrapper">
+        <SectionHeader text="Add to Archives" />
+        <form>
+          <InputGroup
+            inputType="date"
+            inputName="date"
+            inputPlaceholder="mm-dd-yyyy"
+            labelText="Paper Date"
+            value={archiveValues.date}
+            handleChange={handleArchiveData}
+          />
+          <InputGroup
+            inputType="file"
+            inputName="pdf"
+            inputPlaceholder="Paper PDF"
+            labelText="Paper PDF"
+            value={archiveValues.pdf}
+            handleChange={handleArchiveData}
+          />
+          <button type="submit" onClick={handleSubmit} className="button">
+            Add to Archives
+          </button>
+          {loading && (
+            <div className="admin-loader-container">
+              <Loader />
+            </div>
+          )}
+          {archiveValues.submissionError && (
+            <p>
+              Something went wrong. Please try again. Values could be missing
+              from the form, so make sure every field is filled out.
+            </p>
+          )}
+        </form>
+      </div>
+      <Footer />
+    </main>
   );
 }

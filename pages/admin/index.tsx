@@ -13,17 +13,17 @@ const AdminHomePage: NextPage = () => {
         <div className="admin-links">
           <Link href="/admin/articles/add">
             <a className="button button-admin" href="/admin/articles/add">
-                Add Article/Teaser
+              Add Article/Teaser
             </a>
           </Link>
           <Link href="/admin/articles/update">
             <a className="button button-admin" href="/admin/articles/update">
-                Update Article/Teaser
+              Update Article/Teaser
             </a>
           </Link>
           <Link href="/admin/articles/delete">
             <a className="button button-admin" href="/admin/articles/delete">
-                    Delete Article/Teaser
+              Delete Article/Teaser
             </a>
           </Link>
         </div>
@@ -36,7 +36,21 @@ const AdminHomePage: NextPage = () => {
           </Link>
           <Link href="/admin/archives/delete">
             <a className="button button-admin" href="/admin/archives/delete">
-                Remove from archives
+              Remove from archives
+            </a>
+          </Link>
+        </div>
+
+        <SectionHeader text="Advertisements" />
+        <div className="admin-links">
+          <Link href="/admin/ads/add">
+            <a className="button button-admin" href="/admin/ads/add">
+              Add to Advertisements
+            </a>
+          </Link>
+          <Link href="/admin/ads/delete">
+            <a className="button button-admin" href="/admin/ads/delete">
+              Delete from advertisements
             </a>
           </Link>
         </div>

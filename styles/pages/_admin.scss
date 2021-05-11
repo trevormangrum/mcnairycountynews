@@ -12,12 +12,12 @@
   }
 }
 .admin-links {
-    @include ab.flex-row;
-    flex-wrap: wrap;
-    justify-content:center;
+  @include ab.flex-row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .admin-item {
-  background:white;
+  background: white;
   height: 100px;
   @include ab.flex-row;
   align-items: center;
@@ -31,4 +31,7 @@
 }
 .editor {
   @include ab.bg-white;
+}
+.admin-loader-container {
+  @include ab.flex-column;
 }

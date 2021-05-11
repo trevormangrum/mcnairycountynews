@@ -16,6 +16,7 @@ const AdminItem: React.FC<Props> = ({
   return (
     <div className="teaser admin-item">
       {type == "articles" && <h2>{text}</h2>}
+      {type == "ads" && <h2>{text}</h2>}
       {type == "archives" && (
         <h2>
           {new Date(text as string).toLocaleString("en-US", {

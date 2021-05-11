@@ -11,6 +11,7 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import InputGroup from "components/InputGroup";
 import { Router } from "next/router";
+import Loader from "components/Loader";
 const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 interface IFormValues {
@@ -82,6 +83,10 @@ export default function CreateArticlePage() {
     if (articleValues.submissionError) {
       setArticleValues({ ...articleValues, ["submissionError"]: false });
     }
+    if (!articleValues.image) {
+      setArticleValues({ ...articleValues, ["submissionError"]: true });
+      return;
+    }
     if (!articleValues.body) {
       setArticleValues({ ...articleValues, ["error"]: true });
       return;
@@ -117,7 +122,7 @@ export default function CreateArticlePage() {
       <Header />
       <div className="admin-wrapper">
         <SectionHeader text="Add to Articles" />
-        <div>
+        <form>
           <p>
             Here you can add teasers to the website. Continue writing what this
             does here....
@@ -163,7 +168,19 @@ export default function CreateArticlePage() {
           <button type="submit" className="button" onClick={handleSubmit}>
             Create Teaser
           </button>
-        </div>
+
+          {loading && (
+            <div className="admin-loader-container">
+              <Loader />
+            </div>
+          )}
+          {articleValues.submissionError && (
+            <p>
+              Something went wrong. Please try again. Please make sure that all
+              fields are filled out.
+            </p>
+          )}
+        </form>
       </div>
       <Footer />
     </main>

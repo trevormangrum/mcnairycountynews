@@ -8,7 +8,7 @@ import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
 import AdminItem from "components/AdminItem";
 import Head from "next/head";
-import { Article, Archive } from "utils/types";
+import { Article, Archive, Advertisement } from "utils/types";
 
 export default function AdminWorkPage() {
   const router = useRouter();
@@ -17,7 +17,9 @@ export default function AdminWorkPage() {
   const query =
     type == "articles"
       ? queries.articles.getTeasers
-      : queries.archives.getArchivedPapers;
+      : type === "archives"
+      ? queries.archives.getArchivedPapers
+      : queries.ads.getAds;
   const { data, loading, error } = useQuery(query, {
     client: client,
   });
@@ -73,6 +75,22 @@ export default function AdminWorkPage() {
                 <AdminItem
                   text={archive.date}
                   id={archive.sys.id}
+                  method={method as string}
+                  type={type}
+                  handleSubmit={handleSubmit}
+                />
+              );
+            })}
+          {data &&
+            !loading &&
+            type == "ads" &&
+            method != "add" &&
+            /* Display a list of archives with a button that performs an action based on method. */
+            data.adCollection?.items.map((ad: Advertisement) => {
+              return (
+                <AdminItem
+                  text={ad.businessName}
+                  id={ad.sys.id}
                   method={method as string}
                   type={type}
                   handleSubmit={handleSubmit}

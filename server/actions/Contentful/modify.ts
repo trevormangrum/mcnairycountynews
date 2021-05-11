@@ -1,5 +1,5 @@
 import { createClient } from "contentful-management";
-import { Article, Archive } from "utils/types";
+import { Article, Archive, Advertisement } from "utils/types";
 import { File } from "formidable";
 import fs from "fs";
 const client = createClient({
@@ -140,5 +140,31 @@ export const addArchive = async (archive: Archive) => {
     },
   });
   await newArchive.publish();
-  if (!newArchive) throw new Error("Error creating new article.");
+  if (!newArchive) throw new Error("Error creating new archive.");
+};
+
+/**
+ * Add to advertisements.
+ */
+export const addAdvertisement = async (ad: Advertisement) => {
+  const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
+  const environment = await space.getEnvironment("master");
+  const newAd = await environment.createEntry("ad", {
+    fields: {
+      businessName: {
+        "en-US": ad.businessName,
+      },
+      url: {
+        "en-US": ad.url ? ad.url : "#",
+      },
+      image: {
+        "en-US": ad.image,
+      },
+      priority: {
+        "en-US": ad.priority,
+      },
+    },
+  });
+  await newAd.publish();
+  if (!newAd) throw new Error("Error creating new ad.");
 };

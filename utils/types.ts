@@ -26,8 +26,18 @@ export interface ContentfulAsset {
 
 export interface Archive {
   sys?: {
-    id: string;
+    id?: string;
   };
   date?: string;
   pdf?: ContentfulAsset;
+}
+
+export interface Advertisement {
+  sys?: {
+    id?: string;
+  };
+  businessName?: string;
+  priority?: string;
+  url?: string;
+  image?: ContentfulAsset;
 }

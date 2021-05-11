@@ -41,6 +41,21 @@ export default {
       query getAds {
         adCollection {
           items {
+            sys {
+              id
+            }
+            businessName
+            image
+            url
+          }
+        }
+      }
+    `,
+    getAdsByPriority: gql`
+      query getAdsByPriority($prio: String!) {
+        adCollection(where: { priority: $prio }) {
+          items {
+            businessName
             image
             url
           }
