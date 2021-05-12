@@ -25,3 +25,7 @@ p {
   align-self: center;
   text-align: right;
 }
+.inline-link {
+  color: map-get(abstracts.$colors, "theme", "primary");
+  text-decoration: none;
+}

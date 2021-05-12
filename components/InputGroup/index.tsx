@@ -4,8 +4,9 @@ interface Props {
   labelText: string;
   inputName: string;
   inputPlaceholder: string;
-  value: any;
-  handleChange: any;
+  value?: any;
+  handleChange?: any;
+
 }
 const InputGroup: React.FC<Props> = ({
   inputType,
@@ -42,7 +43,17 @@ const InputGroup: React.FC<Props> = ({
       {inputType == "textarea" && (
         <textarea name={inputName} placeholder={inputPlaceholder} required />
       )}
-      {inputType == "select" && (
+      {inputType == "select" && inputName == "priority" && (
+        <select name={inputName} value={value} onChange={handleChange} required>
+          <option value="">
+            Please select a priority from the fields below.
+          </option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      )}
+      {inputType == "select" && inputName != "priority" && (
         <select name={inputName} required>
           <option value="">Please select a state from the fields below.</option>
           <option value="AL">Alabama</option>

@@ -12,9 +12,28 @@
   }
 }
 .admin-links {
-    @include ab.flex-row;
-    flex-wrap: wrap;
-    justify-content:center;
+  @include ab.flex-row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.admin-item {
+  background: white;
+  height: 100px;
+  @include ab.flex-row;
+  align-items: center;
+  & > h2 {
+    margin-left: 10px;
+  }
+  & > .button {
+    margin-right: 10px;
+    margin-left: auto;
+  }
+}
+.editor {
+  @include ab.bg-white;
+}
+.admin-loader-container {
+  @include ab.flex-column;
 }
 .admin-item {
   background:white;

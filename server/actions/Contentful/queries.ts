@@ -39,10 +39,41 @@ export default {
   ads: {
     getAds: gql`
       query getAds {
-        adCollection {
+        adCollection(order: [priority_ASC]) {
           items {
+            sys {
+              id
+            }
+            businessName
             image
             url
+            priority
+          }
+        }
+      }
+    `,
+    getAdsByPriority: gql`
+      query getAdsByPriority($prio: String!) {
+        adCollection(where: { priority: $prio }) {
+          items {
+            businessName
+            image
+            url
+          }
+        }
+      }
+    `,
+  },
+  archives: {
+    getArchivedPapers: gql`
+      query getArchivedPapers {
+        archivesCollection {
+          items {
+            sys {
+              id
+            }
+            date
+            pdf
           }
         }
       }

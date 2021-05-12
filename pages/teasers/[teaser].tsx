@@ -1,16 +1,30 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { Article } from "utils/types";
+import { Advertisement, Article } from "utils/types";
+
 import Layout from "components/Layout";
 import { client } from "server/actions/Contentful";
+import { useQuery } from "@apollo/client";
 import queries from "server/actions/Contentful/queries";
 import { GetStaticPropsContext } from "next";
 import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
+import { randomizeAds } from "server/helpers/ads";
+import Ad from "components/Ad";
+
 interface Props {
   teaser: Article;
 }
 const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
-  console.log(teaser);
+  const { data: adData, loading: adLoading, error: adError } = useQuery(
+    queries.ads.getAdsByPriority,
+    {
+      client: client,
+      variables: { prio: "1" },
+    }
+  );
+  const ads: Advertisement[] =
+    adData && randomizeAds(adData.adCollection.items.slice(0));
+
   const router = useRouter();
   if (router.isFallback) {
     return <h1>Loading...</h1>;
@@ -35,13 +49,27 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
             })}
           </p>
           <p>Written by: {teaser.author}</p>
-          <DigitalAdPlaceholder />
+          {ads.length > 0 ? (
+            <Ad
+              imageUrl={ads[0].image?.url as string}
+              url={ads[0].url as string}
+            />
+          ) : (
+            <DigitalAdPlaceholder />
+          )}
           <article
             className="blogContent"
             dangerouslySetInnerHTML={{ __html: teaser.body as string }}
           ></article>
 
-          <DigitalAdPlaceholder />
+          {ads.length > 1 ? (
+            <Ad
+              imageUrl={ads[1].image?.url as string}
+              url={ads[1].url as string}
+            />
+          ) : (
+            <DigitalAdPlaceholder />
+          )}
         </div>
       )}
     </Layout>
