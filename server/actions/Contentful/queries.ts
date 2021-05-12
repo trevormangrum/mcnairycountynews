@@ -39,7 +39,7 @@ export default {
   ads: {
     getAds: gql`
       query getAds {
-        adCollection {
+        adCollection(order: [priority_ASC]) {
           items {
             sys {
               id
@@ -47,6 +47,7 @@ export default {
             businessName
             image
             url
+            priority
           }
         }
       }

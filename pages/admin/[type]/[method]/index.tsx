@@ -89,8 +89,8 @@ export default function AdminWorkPage() {
             data.adCollection?.items.map((ad: Advertisement) => {
               return (
                 <AdminItem
-                  text={ad.businessName}
-                  id={ad.sys.id}
+                  text={`${ad.businessName} (Priority: ${ad.priority})`}
+                  id={ad.sys?.id}
                   method={method as string}
                   type={type}
                   handleSubmit={handleSubmit}

@@ -6,7 +6,13 @@ interface Props {
 }
 const Ad: React.FC<Props> = ({ url, imageUrl }) => {
   return (
-    <a href={url ? url : "#"} style={{ background: `url(${imageUrl})` }}></a>
+    <a
+      className="digital-ad"
+      href={url ? url : "#"}
+      target="_blank"
+      rel="noopener"
+      style={{ background: `url(${imageUrl})` }}
+    ></a>
   );
 };
 export default Ad;
