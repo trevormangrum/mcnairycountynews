@@ -11,7 +11,9 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import InputGroup from "components/InputGroup";
 import { Router } from "next/router";
+
 import Loader from "components/Loader";
+
 const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 interface IFormValues {
@@ -122,6 +124,7 @@ export default function CreateArticlePage() {
       <Header />
       <div className="admin-wrapper">
         <SectionHeader text="Add to Articles" />
+
         <form>
           <p>
             Here you can add teasers to the website. Continue writing what this

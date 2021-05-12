@@ -9,7 +9,6 @@ import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
 import { Advertisement, Article } from "utils/types";
 import { randomizeAds } from "server/helpers/ads";
 import Ad from "components/Ad";
-
 export default function Home() {
   const { loading, data, error } = useQuery(queries.articles.getTeasers, {
     client: client,
@@ -72,6 +71,7 @@ export default function Home() {
               return <Teaser article={article} large={false} />;
             }
           )}
+
       </Layout>
     </div>
   );

@@ -6,6 +6,7 @@ interface Props {
   inputPlaceholder: string;
   value?: any;
   handleChange?: any;
+
 }
 const InputGroup: React.FC<Props> = ({
   inputType,

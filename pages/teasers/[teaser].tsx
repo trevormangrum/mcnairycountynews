@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Advertisement, Article } from "utils/types";
+
 import Layout from "components/Layout";
 import { client } from "server/actions/Contentful";
 import { useQuery } from "@apollo/client";
@@ -9,6 +10,7 @@ import { GetStaticPropsContext } from "next";
 import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
 import { randomizeAds } from "server/helpers/ads";
 import Ad from "components/Ad";
+
 interface Props {
   teaser: Article;
 }

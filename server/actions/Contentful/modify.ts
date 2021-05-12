@@ -8,7 +8,9 @@ const client = createClient({
 
 /**
  * Creates a new article and uploads it to Contentful.
+
  * @param article The article object containing information to be used in creation.
+
  */
 export const addArticle = async (article: Article) => {
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
@@ -38,6 +40,7 @@ export const addArticle = async (article: Article) => {
   await newArticle.publish();
   if (!newArticle) throw new Error("Error creating new article.");
 };
+
 /**
  * Update article information.
  * @params Article containing updated information.
@@ -48,9 +51,11 @@ export const updateArticle = async () => {
 };
 /**
  * Delete an article by it's system id in Contentful.
+
  * @param id The id of the article/archive to be deleted.
  */
 export const deleteEntry = async (id: string) => {
+
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
   const entry = await environment.getEntry(id);
@@ -58,10 +63,12 @@ export const deleteEntry = async (id: string) => {
     const image = entry.fields.image["en-US"];
     deleteAssetByID(image.assetID);
   }
+
   if (entry.fields.pdf) {
     const pdf = entry.fields.pdf["en-US"];
     deleteAssetByID(pdf.assetID);
   }
+
   await entry.unpublish();
   await entry.delete();
 };
@@ -80,6 +87,7 @@ export async function deleteAssetByID(ID: string) {
   await asset.delete();
 }
 /**
+
  * @param asset file of type Formidable.File to be uploaded.
  * @returns An object containing the uploaded image's asset ID and url.
  * @throws  Error if resource creation is unsuccessful
@@ -104,6 +112,7 @@ export async function uploadAsset(asset: File) {
       },
     },
   });
+
 
   newAsset = await newAsset.processForAllLocales();
   newAsset = await newAsset.publish();
@@ -168,3 +177,4 @@ export const addAdvertisement = async (ad: Advertisement) => {
   await newAd.publish();
   if (!newAd) throw new Error("Error creating new ad.");
 };
+

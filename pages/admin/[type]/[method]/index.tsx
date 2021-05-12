@@ -8,8 +8,8 @@ import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
 import AdminItem from "components/AdminItem";
 import Head from "next/head";
-import { Article, Archive, Advertisement } from "utils/types";
 
+import { Article, Archive, Advertisement } from "utils/types";
 export default function AdminWorkPage() {
   const router = useRouter();
   const { type, method } = router.query;

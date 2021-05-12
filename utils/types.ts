@@ -19,6 +19,7 @@ export interface EmailMessage {
   subject: string;
 }
 
+
 export interface ContentfulAsset {
   assetID: string;
   url: string;
