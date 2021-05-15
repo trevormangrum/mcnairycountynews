@@ -16,7 +16,6 @@
     box-shadow: 0px 0px 3px #eaeaea;
     outline: none;
     @include ab.bg-white;
-
   }
   & > label {
     text-transform: uppercase;
@@ -29,5 +28,16 @@
   & > select > option {
     @include ab.font-family-primary;
     @include ab.text-primary;
+  }
+  & > .checkbox-container {
+    @include ab.flex-row;
+    line-height: 2rem;
+    padding: 10px;
+    & > label {
+      margin-left: 10px;
+    }
+    & > div:nth-child(1) {
+      margin-right: 40px;
+    }
   }
 }

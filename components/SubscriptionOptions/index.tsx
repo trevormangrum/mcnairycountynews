@@ -1,10 +1,22 @@
 import React from "react";
-
-const SubscriptionOptions: React.FC = () => {
+interface Props {
+  setValues: any;
+}
+const SubscriptionOptions: React.FC<Props> = ({ setValues }) => {
   return (
     <div className="sub-options">
       <div className="sub-body">
-        <input type="radio" name="sub-option" value="standard" />
+        <input
+          type="radio"
+          name="sub-option"
+          value="standard"
+          onClick={() =>
+            setValues(values => ({
+              ...values,
+              ["sub-option"]: "standard",
+            }))
+          }
+        />
         <div className="sub-text">
           <h2>Standard Edition</h2>
           <div className="sub-pricing">
@@ -26,7 +38,17 @@ const SubscriptionOptions: React.FC = () => {
         </div>
       </div>
       <div className="sub-body">
-        <input type="radio" name="sub-option" value="email" />
+        <input
+          type="radio"
+          name="sub-option"
+          value="email"
+          onClick={() =>
+            setValues(values => ({
+              ...values,
+              ["sub-option"]: "email",
+            }))
+          }
+        />
         <div className="sub-text">
           <h2>Email Edition</h2>
           <div className="sub-pricing">
