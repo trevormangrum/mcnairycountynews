@@ -9,10 +9,13 @@ interface IFormValues {
   lname?: string | undefined;
   phone?: string | undefined;
   email?: string | undefined;
+  subOption: string | undefined;
   dob?: string | undefined;
   state?: string | undefined;
   address?: string | undefined;
   zip?: string | undefined;
+  submissionError?: boolean | undefined;
+  [key: string]: string | boolean | null | undefined;
 }
 export default function SubscribePage() {
   const options = {
@@ -31,7 +34,30 @@ export default function SubscribePage() {
       }));
     }
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    //Clear the submission error before attempting to submit again.
+    if (values.submissionError) {
+      delete values.submissionError;
+    }
+    for (let key in values) {
+      //If there's a key in the values object that has no value, then we return and display an error.
+      if (!values[key]) {
+        setValues(values => ({ ...values, ["submissionError"]: true }));
+        return;
+      }
+    }
+    const response = await fetch("/api/subscribe", {
+      method: "POST",
+      body: JSON.stringify(values),
+    });
+    if (response.status === 200) {
+      console.log("SUCCESS");
+    }
+    if (response.status === 500) {
+      console.error("BAD");
+    }
+  };
   return (
     <Layout options={options}>
       <Head>

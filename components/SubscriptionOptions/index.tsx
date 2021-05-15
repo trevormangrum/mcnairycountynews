@@ -8,12 +8,12 @@ const SubscriptionOptions: React.FC<Props> = ({ setValues }) => {
       <div className="sub-body">
         <input
           type="radio"
-          name="sub-option"
+          name="subOption"
           value="standard"
           onClick={() =>
             setValues(values => ({
               ...values,
-              ["sub-option"]: "standard",
+              ["subOption"]: "standard",
             }))
           }
         />
@@ -40,12 +40,12 @@ const SubscriptionOptions: React.FC<Props> = ({ setValues }) => {
       <div className="sub-body">
         <input
           type="radio"
-          name="sub-option"
+          name="subOption"
           value="email"
           onClick={() =>
             setValues(values => ({
               ...values,
-              ["sub-option"]: "email",
+              ["subOption"]: "email",
             }))
           }
         />

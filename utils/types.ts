@@ -1,4 +1,3 @@
-import { StringifyOptions } from "node:querystring";
 
 export interface Article {
   sys?: {
