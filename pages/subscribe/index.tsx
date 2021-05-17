@@ -4,6 +4,7 @@ import Head from "next/head";
 import SubscriptionOptions from "components/SubscriptionOptions";
 import SectionHeader from "components/SectionHeader";
 import InputGroup from "components/InputGroup";
+//TODO: Remove everything from form except for DOB, Veteran, SubOption. Gonna have to get creative on how to display the second button.
 interface IFormValues {
   fname?: string | undefined;
   lname?: string | undefined;
@@ -23,6 +24,7 @@ export default function SubscribePage() {
     pageTitleText: "Subscribe",
   };
   const [values, setValues] = React.useState({} as IFormValues);
+  const [token, setToken] = React.useState("");
 
   const handleChange = (e: React.SyntheticEvent) => {
     e.persist();
@@ -52,7 +54,8 @@ export default function SubscribePage() {
       body: JSON.stringify(values),
     });
     if (response.status === 200) {
-      console.log("SUCCESS");
+      const data = await response.json();
+      setToken(data.payload);
     }
     if (response.status === 500) {
       console.error("BAD");
@@ -153,6 +156,14 @@ export default function SubscribePage() {
           Proceed to payment
         </button>
       </form>
+      {token != "" && (
+        <form method="POST" action="https://test.authorize.net/payment/payment">
+          <input type="hidden" name="token" value={token} />
+          <button type="submit" className="button">
+            Generate the form
+          </button>
+        </form>
+      )}
     </Layout>
   );
 }

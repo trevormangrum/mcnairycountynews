@@ -1,4 +1,3 @@
-
 export interface Article {
   sys?: {
     id?: string;
@@ -17,7 +16,6 @@ export interface EmailMessage {
   body: string;
   subject: string;
 }
-
 
 export interface ContentfulAsset {
   assetID: string;
@@ -40,4 +38,18 @@ export interface Advertisement {
   priority?: string;
   url?: string;
   image?: ContentfulAsset;
+}
+
+export interface SubscriptionContactInfo {
+  fname?: string;
+  lname?: string;
+  phone?: string;
+  email?: string;
+  dob?: string;
+  address?: string;
+  veteran?: boolean;
+  city?: string;
+  state?: string;
+  zip?: string;
+  price?: number | string;
 }

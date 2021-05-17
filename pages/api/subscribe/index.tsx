@@ -1,14 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
-
+import { SubscriptionContactInfo } from "utils/types";
+import Authorize from "server/actions/Authorize";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    //TODO: when calculating price for subscription, check zip code to see if it's in county or out of county.
-    //TODO: Also check, if state is not TN, then you know they are out of county.
-    console.log(JSON.parse(req.body));
-    res.status(200).json({
-      payload: {},
+    const subInfo = JSON.parse(req.body) as SubscriptionContactInfo;
+    const a = new Authorize();
+
+    subInfo.price = "35.00";
+    a.generateAcceptPage(subInfo, async function (response) {
+      res.status(200).json({
+        payload: response.getToken(),
+      });
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       payload: error,
     });
