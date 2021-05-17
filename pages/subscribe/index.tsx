@@ -105,7 +105,8 @@ export default function SubscribePage() {
       </form>
       {token != "" && (
         <form method="POST" action="https://test.authorize.net/payment/payment">
-          <p>Your subscription cost will be: ${subCost}. </p>
+          <SectionHeader text="Proceed to Payment" />
+          <p>Your subscription cost will be: ${subCost}. Clicking the button below will redirect you to the checkout screen, hosted by Authorize.Net</p>
           <input type="hidden" name="token" value={token} />
           <button type="submit" className="button">
             Proceed to payment
