@@ -1,15 +1,18 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { SubscriptionContactInfo } from "utils/types";
+import { calculateSubscriptionPrice } from "server/helpers/subscribe";
 import Authorize from "server/actions/Authorize";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const subInfo = JSON.parse(req.body) as SubscriptionContactInfo;
     const a = new Authorize();
-
-    subInfo.price = "35.00";
-    a.generateAcceptPage(subInfo, async function (response) {
+    const cost = calculateSubscriptionPrice(subInfo);
+    a.generateAcceptPage(cost, async function (response) {
       res.status(200).json({
-        payload: response.getToken(),
+        payload: {
+          token: response.getToken(),
+          cost: cost,
+        }
       });
     });
   } catch (error) {

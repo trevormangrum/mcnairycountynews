@@ -12,12 +12,12 @@ export default class Authorize {
     );
   }
 
-  generateAcceptPage(subInfo: SubscriptionContactInfo, cb: any) {
+  generateAcceptPage(price: string, cb: any) {
     const transactionRequestType = new ApiContracts.TransactionRequestType();
     transactionRequestType.setTransactionType(
       ApiContracts.TransactionTypeEnum.AUTHCAPTURETRANSACTION
     );
-    transactionRequestType.setAmount(subInfo.price);
+    transactionRequestType.setAmount(price);
 
     const setting1 = new ApiContracts.SettingType();
     setting1.setSettingName("hostedPaymentButtonOptions");

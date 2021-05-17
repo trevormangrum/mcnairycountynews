@@ -41,15 +41,7 @@ export interface Advertisement {
 }
 
 export interface SubscriptionContactInfo {
-  fname?: string;
-  lname?: string;
-  phone?: string;
-  email?: string;
   dob?: string;
-  address?: string;
-  veteran?: boolean;
-  city?: string;
-  state?: string;
-  zip?: string;
+  veteran?: string;
   price?: number | string;
 }
