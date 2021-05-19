@@ -1,5 +1,3 @@
-import { StringifyOptions } from "node:querystring";
-
 export interface Article {
   sys?: {
     id?: string;
@@ -18,7 +16,6 @@ export interface EmailMessage {
   body: string;
   subject: string;
 }
-
 
 export interface ContentfulAsset {
   assetID: string;
@@ -41,4 +38,10 @@ export interface Advertisement {
   priority?: string;
   url?: string;
   image?: ContentfulAsset;
+}
+
+export interface SubscriptionContactInfo {
+  dob?: string;
+  veteran?: string;
+  price?: number | string;
 }

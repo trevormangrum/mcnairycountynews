@@ -6,7 +6,6 @@ interface Props {
   inputPlaceholder: string;
   value?: any;
   handleChange?: any;
-
 }
 const InputGroup: React.FC<Props> = ({
   inputType,
@@ -21,7 +20,8 @@ const InputGroup: React.FC<Props> = ({
       <label htmlFor={inputName}>{labelText}</label>
       {inputType != "textarea" &&
         inputType != "select" &&
-        inputType != "file" && (
+        inputType != "file" &&
+        inputType != "radio" && (
           <input
             type={inputType}
             name={inputName}
@@ -54,7 +54,7 @@ const InputGroup: React.FC<Props> = ({
         </select>
       )}
       {inputType == "select" && inputName != "priority" && (
-        <select name={inputName} required>
+        <select name={inputName} value={value} onChange={handleChange} required>
           <option value="">Please select a state from the fields below.</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -108,6 +108,28 @@ const InputGroup: React.FC<Props> = ({
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
+      )}
+      {inputType == "radio" && (
+        <div className="checkbox-container">
+          <div>
+            <input
+              type="radio"
+              name={inputName}
+              value="Yes"
+              onClick={handleChange}
+            />
+            <label htmlFor={inputName}>Yes</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name={inputName}
+              value="No"
+              onClick={handleChange}
+            />
+            <label htmlFor={inputName}>No</label>
+          </div>
+        </div>
       )}
     </div>
   );
