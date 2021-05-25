@@ -1,7 +1,6 @@
 const ApiContracts = require("authorizenet").APIContracts;
 const ApiControllers = require("authorizenet").APIControllers;
-import { createBuilderStatusReporter } from "typescript";
-import { SubscriptionContactInfo } from "utils/types";
+import urls from "utils/urls";
 export default class Authorize {
   merchantAuthenticationType;
   constructor() {
@@ -26,7 +25,11 @@ export default class Authorize {
     setting2.setSettingName("hostedPaymentOrderOptions");
     setting2.setSettingValue('{"show": false}');
 
-    const settingList = [setting1, setting2];
+    const setting3 = new ApiContracts.SettingType();
+    setting3.setSettingName("hostedPaymentReturnOptions");
+    setting3.setSettingValue(`{"showReceipt": true, "url": "${urls.baseUrl}", "urlText": "Return to MCN", "cancelUrl": "${urls.baseUrl}"  }`)
+
+    const settingList = [setting1, setting2, setting3];
     const alist = new ApiContracts.ArrayOfSetting();
     alist.setSetting(settingList);
 
