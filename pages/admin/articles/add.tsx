@@ -128,8 +128,7 @@ export default function CreateArticlePage() {
 
         <form>
           <p>
-            Here you can add teasers to the website. Continue writing what this
-            does here....
+            Here you can add teasers to the website. Fill out the fields below and press the button to create a teaser. You will be redirected to the admin dashboard if creation was successful. Please do NOT add dashes (-) into the title.  
           </p>
           <InputGroup
             inputType="text"

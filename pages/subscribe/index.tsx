@@ -68,6 +68,7 @@ export default function SubscribePage() {
     <Layout options={options}>
       <Head>
         <title>Subscribe to McNairy County News | McNairy County News</title>
+        <meta name="description" content="McNairy County News offers physical and digital subscription services. Subscribe today to receive McNairy County News weekly! "/>
       </Head>
       <form>
         <SectionHeader text="Choose a Subscription" />

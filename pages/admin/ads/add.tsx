@@ -74,6 +74,7 @@ export default function addAdvertisementPage() {
       <Header />
       <div className="admin-wrapper">
         <SectionHeader text="Add to Advertisements" />
+        <p> Here you can add advertisements to the ad system on the site. Priority determines where the ads go. Priority 1 ads go on the individual teasers page. Priority 2 ads go into the teasers column on the home page. Priority 3 ads go into the sidebar.</p>
         <form>
           <InputGroup
             inputType="text"

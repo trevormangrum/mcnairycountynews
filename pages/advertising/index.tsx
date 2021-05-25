@@ -13,6 +13,7 @@ export default function AdvertisingPage() {
     <Layout options={options}>
       <Head>
         <title>Advertising Rates | McNairy County News</title>
+        <meta name="description" content="McNairy County News offers digital and paper advertising. Contact us for your advertising needs!" />
       </Head>
       <SectionHeader text="Digital Advertising" />
       <p>
