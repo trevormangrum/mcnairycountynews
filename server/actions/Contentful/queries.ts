@@ -79,18 +79,4 @@ export default {
       }
     `,
   },
-  archives: {
-    getArchivedPapers: gql`
-      query getArchivedPapers {
-        archivesCollection {
-          items {
-            date
-            pdf {
-              url
-            }
-          }
-        }
-      }
-    `,
-  },
 };

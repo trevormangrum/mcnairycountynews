@@ -20,19 +20,13 @@ export default function archivesPage() {
     data.archivesCollection.items.slice().sort((a, b) => a.date - b.date);
   return (
     <Layout options={{ pageTitle: true, pageTitleText: "Archives" }}>
-      <InputGroup
-        inputType="search"
-        inputName="search"
-        labelText="Search"
-        inputPlaceholder="Search for archives here..."
-      />
 
       {sortedArchives &&
         !loading &&
         !error &&
         sortedArchives.map((archive: Archive) => {
           return (
-            <a rel="noopener" target="_blank" href={archive.pdf?.url}>
+            <a rel="noopener" target="_blank" href={archive.pdf?.url} className="archive-link">
               {new Date(archive.date as string).toLocaleString("en-US", {
                 timeZone: "UTC",
                 year: "numeric",
