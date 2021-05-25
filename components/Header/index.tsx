@@ -42,7 +42,7 @@ const Header: React.FC = () => {
               Public Notices
             </a>
 
-            <Link href="#">
+            <Link href="https://www.shackelfordfuneraldirectors.com/obituaries/" target="_blank" rel="noopener">
               <a href="">Obituaries</a>
             </Link>
             <Link href="/subscribe">
