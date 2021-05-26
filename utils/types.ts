@@ -42,6 +42,13 @@ export interface Advertisement {
 
 export interface SubscriptionContactInfo {
   dob?: string;
-  veteran?: string;
+  veteran?: string; 
   price?: number | string;
+}
+
+export interface User {
+  username: string;
+  pass: string;
+  role?: string;
+
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import queries from "server/actions/Contentful/queries";
-import { client } from "server/actions/Contentful";
-import { useQuery } from "@apollo/client";
 import Delta from "quill";
 import { Sources } from "quill";
 import Head from "next/head";
@@ -10,7 +8,9 @@ import SectionHeader from "components/SectionHeader";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import InputGroup from "components/InputGroup";
-import { Router } from "next/router";
+import  Router, { useRouter } from "next/router";
+import { NextPageContext } from "next";
+import urls from "utils/urls";
 
 import Loader from "components/Loader";
 
@@ -31,6 +31,7 @@ export default function CreateArticlePage() {
   const [articleValues, setArticleValues] = React.useState({} as IFormValues);
   const [imageURL, setImageURL] = React.useState({});
   const [loading, setLoading] = React.useState(false);
+  const router = useRouter();
   const handleArticleData = (e: React.SyntheticEvent) => {
     e.persist();
     const target = e.target as HTMLInputElement;
@@ -110,7 +111,7 @@ export default function CreateArticlePage() {
     });
     if (response.status === 200) {
       setLoading(false);
-      window.location.reload();
+     router.push(`${urls.baseUrl}${urls.pages.admin.index}`) 
     } else {
       setArticleValues({ ...articleValues, ["submissionError"]: true });
     }
@@ -127,8 +128,7 @@ export default function CreateArticlePage() {
 
         <form>
           <p>
-            Here you can add teasers to the website. Continue writing what this
-            does here....
+            Here you can add teasers to the website. Fill out the fields below and press the button to create a teaser. You will be redirected to the admin dashboard if creation was successful. Please do NOT add dashes (-) into the title.  
           </p>
           <InputGroup
             inputType="text"
@@ -189,3 +189,27 @@ export default function CreateArticlePage() {
     </main>
   );
 }
+
+export async function getServerSideProps(context: NextPageContext) {
+  //Code comes from mindversity website. https://github.com/hack4impact-utk/mindversity-website/blob/develop/pages/portal/index.tsx
+  const cookie = context.req?.headers.cookie;
+  const resp = await fetch(`${urls.baseUrl}${urls.api.admin.validate}`, {
+    headers: {
+      cookie: cookie!,
+    }
+  })
+  //If the cookie is not present, redirect to the login page.
+  if(resp.status === 401 && !context.req) {
+    void Router.replace(`${urls.baseUrl}${urls.pages.login}`);
+    return { props: {} };
+  }
+  if(resp.status === 401 && context.req) {
+    context.res?.writeHead(302, {
+      Location: `${urls.baseUrl}`,
+    });
+    context.res?.end();
+    return { props: {} };
+  }
+  return { props: {} }
+}
+

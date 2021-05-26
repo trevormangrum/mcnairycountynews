@@ -8,6 +8,7 @@ import { client } from "server/actions/Contentful";
 import queries from "server/actions/Contentful/queries";
 import AdminItem from "components/AdminItem";
 import Head from "next/head";
+import urls from "utils/urls";
 
 import { Article, Archive, Advertisement } from "utils/types";
 export default function AdminWorkPage() {
@@ -102,4 +103,27 @@ export default function AdminWorkPage() {
       <Footer />
     </main>
   );
+}
+
+export async function getServerSideProps(context: NextPageContext) {
+  //Code comes from mindversity website. https://github.com/hack4impact-utk/mindversity-website/blob/develop/pages/portal/index.tsx
+  const cookie = context.req?.headers.cookie;
+  const resp = await fetch(`${urls.baseUrl}${urls.api.admin.validate}`, {
+    headers: {
+      cookie: cookie!,
+    }
+  })
+  //If the cookie is not present, redirect to the login page.
+  if(resp.status === 401 && !context.req) {
+    void Router.replace("/login");
+    return { props: {} };
+  }
+  if(resp.status === 401 && context.req) {
+    context.res?.writeHead(302, {
+      Location: `${urls.baseUrl}`,
+    });
+    context.res?.end();
+    return { props: {} };
+  }
+  return { props: {} }
 }
