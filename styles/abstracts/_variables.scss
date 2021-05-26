@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+$colors: (
+  theme: (
+    primary: #1869a5,
+    secondary: #474747,
+    background: #f0f7fc,
+  ),
+  text: (
+    primary: #535353,
+    sports: #0000cc,
+    school: #a8e0a4,
+  ),
+  categorybg: (
+    sports: #b1b1f0,
+    school: #287622,
+  ),
+);
+
+$fonts: (
+  primary: #{"Asap",
+  sans-serif},
+);
+
+$breakpoints: (
+  "medium": (
+    min-width: 1000px,
+  ),
+);

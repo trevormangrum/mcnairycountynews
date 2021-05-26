@@ -1,0 +1,71 @@
+import React from "react";
+import SectionHeader from "components/SectionHeader";
+import SocialMediaButton from "components/SocialMediaButton";
+import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
+import Link from "next/link";
+import queries from "server/actions/Contentful/queries";
+import { useQuery } from "@apollo/client";
+import { client } from "server/actions/Contentful";
+import { randomizeAds } from "server/helpers/ads";
+import Ad from "components/Ad";
+import { Advertisement } from "utils/types";
+interface Props {
+  pageTitle: boolean;
+}
+const Sidebar: React.FC<Props> = ({ pageTitle }) => {
+  const { data: adData, loading: adLoading, error: adError } = useQuery(
+    queries.ads.getAdsByPriority,
+    {
+      client: client,
+      variables: { prio: "3" },
+    }
+  );
+  const ads: Advertisement[] =
+    adData && randomizeAds(adData.adCollection.items.slice(0));
+  return (
+    <aside className={`${"sidebar"} ${pageTitle ? "sidebar-margin" : ""}`}>
+      {ads && ads.length > 0 ? (
+        <Ad imageUrl={ads[0].image?.url as string} url={ads[0].url as string} />
+      ) : (
+        <DigitalAdPlaceholder />
+      )}
+      <SectionHeader text="Social Media" />
+      <SocialMediaButton media="fb" />
+      <SocialMediaButton media="ig" />
+      {ads && ads.length > 1 ? (
+        <Ad imageUrl={ads[1].image?.url as string} url={ads[1].url as string} />
+      ) : (
+        <DigitalAdPlaceholder />
+      )}
+      <SectionHeader text="Subscribe" />
+      <p>Subscribe to the McNairy County News!</p>
+      <Link href="/subscribe">
+        <a className="button" href="/advertising">
+          Subscribe
+        </a>
+      </Link>
+      {ads && ads.length > 2 ? (
+        <Ad imageUrl={ads[2].image?.url as string} url={ads[2].url as string} />
+      ) : (
+        <DigitalAdPlaceholder />
+      )}
+      <SectionHeader text="Advertising" />
+      <p>
+        Interested in advertising your business in our paper or on our website?
+        Click the button below to learn more about our advertising rates.
+      </p>
+      <Link href="/advertising">
+        <a className="button" href="/advertising">
+          Learn More
+        </a>
+      </Link>
+      {ads && ads.length > 3 ? (
+        <Ad imageUrl={ads[3].image?.url as string} url={ads[3].url as string} />
+      ) : (
+        <DigitalAdPlaceholder />
+      )}
+    </aside>
+  );
+};
+
+export default Sidebar;

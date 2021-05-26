@@ -1,0 +1,25 @@
+@use 'abstracts' as ab;
+
+.map {
+    width:100%;
+    height: 400px;
+    margin-bottom: 20px;
+    border-color: map-get(ab.$colors, "theme", "primary");
+}
+
+.contact-info {
+    @include ab.flex-row;
+    margin: 10px 0;
+    & > a {
+        @include ab.text-theme-primary;
+        text-decoration:none;
+        margin: 0px 10px;
+    }
+    & > .contact-icon {
+        @include ab.text-theme-primary;
+    }
+    & > .contact-icon+span {
+        margin: 0px 10px;
+    }
+
+}

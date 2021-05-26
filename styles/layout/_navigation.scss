@@ -1,0 +1,121 @@
+@use 'abstracts' as ab;
+.navigation {
+  @include ab.flex-column;
+  @include ab.font-family-primary;
+  z-index: 1000;
+  & > .container {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+  }
+}
+.upper-nav {
+  display: none;
+  @include ab.respond-to("medium") {
+    @include ab.flex-row;
+    @include ab.bg-primary;
+    width: 100%;
+    justify-content: center;
+    & > .wrapper > a {
+      @include ab.text-white;
+      text-decoration: none;
+      margin: 0 20px;
+      &:last-child {
+        margin: 0 0 0 20px;
+      }
+    }
+  }
+}
+
+.logo {
+  height: 80px;
+  margin-right: auto;
+  margin-left: 20px;
+  cursor: pointer;
+  @include ab.respond-to("medium") {
+    margin-left: 0;
+  }
+}
+
+.nav-button {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0px 20px;
+  z-index: 1002;
+  cursor: pointer;
+  position: relative;
+  & > div {
+    width: 100%;
+    height: 3px;
+    margin: 3px 0px;
+    @include ab.bg-primary;
+  }
+  @include ab.respond-to("medium") {
+    display: none;
+  }
+}
+
+.lower-nav {
+  @include ab.flex-row;
+  @include ab.bg-white;
+  font-weight: 600;
+  width: 100%;
+  justify-content: center;
+  & > .wrapper > a {
+    display: none;
+  }
+  opacity: 0.9;
+  border-top: 5px solid map-get(ab.$colors, "theme", "primary");
+  @include ab.respond-to("medium") {
+    & > .wrapper > a {
+      display: block;
+      @include ab.text-primary;
+      text-decoration: none;
+      margin: 0px 20px;
+
+      &:nth-child(5) {
+
+        margin: 0 0 0 20px;
+      }
+    }
+    border-top: none;
+  }
+}
+.spacer {
+  width: 100%;
+  height: 120px;
+}
+
+.mobile-navbar {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  transition: 0.3s ease;
+  z-index: 1001;
+  & > a:first-child {
+    margin-top: 120px;
+  }
+  & > a {
+    text-decoration: none;
+    align-self: flex-end;
+    @include ab.text-primary;
+    font-size: 20px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    transition: 0.4s ease;
+    &:hover {
+      @include ab.text-theme-primary;
+    }
+  }
+
+  @include ab.respond-to("medium") {
+    display: none;
+  }
+}
