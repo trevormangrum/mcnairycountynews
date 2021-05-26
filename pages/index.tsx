@@ -32,7 +32,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <SectionHeader text="Teasers" />
+        <SectionHeader text="This week in McNairy County News..." />
         {data &&
           !error &&
           data.articleCollection.items.map(

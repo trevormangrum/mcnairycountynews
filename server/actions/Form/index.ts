@@ -11,7 +11,7 @@ export const sendMessage = async (message: EmailMessage): Promise<void> => {
   });
   const mailOptions = {
     from: "mcncontactform@gmail.com",
-    to: "bluetman@gmail.com", // TODO: Make this an email for MCN.
+    to: "suzanne@mcnairycountynews.com", // TODO: Make this an email for MCN.
     subject: message.subject,
     text: body,
   };

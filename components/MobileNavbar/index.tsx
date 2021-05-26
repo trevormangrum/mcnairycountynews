@@ -32,9 +32,9 @@ const MobileNavbar: React.FC<Props> = ({ open }) => {
         Public Notices
       </a>
 
-      <Link target="_blank" rel="noopener" href="https://www.shackelfordfuneraldirectors.com/obituaries/">
-        <a href="">Obituaries</a>
-      </Link>
+      <a target="_blank" rel="noopener" href="https://www.shackelfordfuneraldirectors.com/obituaries/">
+        Obituaries
+      </a>
       <Link href="/login">
         <a href="/login">Login</a>
       </Link>

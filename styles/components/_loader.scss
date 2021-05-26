@@ -1,5 +1,12 @@
 @use 'abstracts' as ab;
 
+.loading-page {
+  width:100%;
+  min-height:100vh;
+  @include ab.flex-column;
+  align-items:center;
+  justify-content:center;
+}
 .loader {
   display: inline-block;
   position: relative;

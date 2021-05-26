@@ -11,6 +11,7 @@ import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
 import { randomizeAds } from "server/helpers/ads";
 import Ad from "components/Ad";
 import urls from "utils/urls";
+import LoadingPage from "components/LoadingPage";
 interface Props {
   teaser: Article;
 }
@@ -31,7 +32,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
   const strippedBody =
     teaser && (teaser.body as string).replace(/(<([^>]+)>)/gi, "");
   if (router.isFallback) {
-    return <h1>Loading...</h1>;
+    return <LoadingPage/>;
   }
   return (
     <Layout>
@@ -82,7 +83,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
             })}
           </p>
           <p>Written by: {teaser.author}</p>
-          {ads.length > 0 ? (
+          {ads && ads.length > 0 ? (
             <Ad
               imageUrl={ads[0].image?.url as string}
               url={ads[0].url as string}
@@ -95,7 +96,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
             dangerouslySetInnerHTML={{ __html: teaser.body as string }}
           ></article>
 
-          {ads.length > 1 ? (
+          {ads && ads.length > 1 ? (
             <Ad
               imageUrl={ads[1].image?.url as string}
               url={ads[1].url as string}

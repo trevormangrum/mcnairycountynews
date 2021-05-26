@@ -2,13 +2,14 @@ const ApiContracts = require("authorizenet").APIContracts;
 const ApiControllers = require("authorizenet").APIControllers;
 import urls from "utils/urls";
 
+const prod = process.env.NODE_ENV === "production";
 export default class Authorize {
   merchantAuthenticationType;
   constructor() {
     this.merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
-    this.merchantAuthenticationType.setName(process.env.AUTHORIZE_LOGIN_ID);
-    this.merchantAuthenticationType.setTransactionKey(
-      process.env.AUTHORIZE_TRANSACTION_KEY
+    this.merchantAuthenticationType.setName(prod ? process.env.AUTHORIZE_PROD_LOGIN_ID : process.env.AUTHORIZE_LOGIN_ID);
+    this.merchantAuthenticationType.setTransactionKey( prod ? 
+      process.env.AUTHORIZE_PROD_TRANSACTION_KEY : process.env.AUTHORIZE_TRANSACTION_KEY, 
     );
   }
 
@@ -33,7 +34,7 @@ export default class Authorize {
     
     const setting4 = new ApiContracts.SettingType();
     setting4.setSettingName("hostedPaymentCustomerOptions");
-    setting4.setSettingValue(`{"showEmail": true, "requiredEmail": true}`);
+    setting4.setSettingValue(`{"showEmail": true, "requiredEmail": false}`);
 
 
     const settingList = [setting1, setting2, setting3, setting4];
