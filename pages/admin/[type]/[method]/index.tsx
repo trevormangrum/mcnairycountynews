@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import SectionHeader from "components/SectionHeader";
@@ -9,6 +9,7 @@ import queries from "server/actions/Contentful/queries";
 import AdminItem from "components/AdminItem";
 import Head from "next/head";
 import urls from "utils/urls";
+import {NextPageContext} from "next";
 
 import { Article, Archive, Advertisement } from "utils/types";
 export default function AdminWorkPage() {
