@@ -28,8 +28,13 @@ export default class Authorize {
     const setting3 = new ApiContracts.SettingType();
     setting3.setSettingName("hostedPaymentReturnOptions");
     setting3.setSettingValue(`{"showReceipt": true, "url": "${urls.baseUrl}", "urlText": "Return to MCN", "cancelUrl": "${urls.baseUrl}"  }`)
+    
+    const setting4 = new ApiContracts.SettingType();
+    setting4.setSettingName("hostedPaymentCustomerOptions");
+    setting4.setSettingValue(`{"showEmail": true, "requiredEmail": true}`);
 
-    const settingList = [setting1, setting2, setting3];
+
+    const settingList = [setting1, setting2, setting3, setting4];
     const alist = new ApiContracts.ArrayOfSetting();
     alist.setSetting(settingList);
 

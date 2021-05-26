@@ -32,11 +32,8 @@ const inCounty = (subInfo: SubscriptionContactInfo): boolean => {
 const sixtyOrOlder  = (subInfo: SubscriptionContactInfo): boolean => {
   const dob = new Date(subInfo.dob as string);
   const currentDate = new Date();
-  console.log(currentDate.getFullYear() - dob.getFullYear());
   if(currentDate.getFullYear() - dob.getFullYear() >= 60) {
     return true
   }
   return false;
 }
-//TODO: when calculating price for subscription, check zip code to see if it's in county or out of county.
-//TODO: Also check, if state is not TN, then you know they are out of county.

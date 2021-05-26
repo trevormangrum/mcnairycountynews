@@ -19,7 +19,6 @@ const Footer: React.FC = () => {
                     <h2 className="footer-header">About</h2>
                     <Link href="/about"><a className="footer-link" href="">About Us</a></Link>
                     <Link href="/contact"><a className="footer-link" href="">Contact Us</a></Link>
-                    <Link href="/privacy"><a className="footer-link" href="">Privacy Policy</a></Link>
                 </div>
             </div>
             <div className="wrapper">
