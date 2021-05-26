@@ -5,10 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "yarn lint:tsc ; yarn lint:eslint",
-    "lint:tsc": "tsc -p tsconfig.json --noEmit",
-    "lint:eslint": "eslint '**/*.{tsx,ts,js,jsx,json}' --fix"
+    "start": "next start"
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
@@ -52,15 +49,5 @@
     "react-quill": "^1.3.5",
     "sass": "^1.32.8",
     "typescript": "^4.2.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{tsx,ts,js,jsx,json}": [
-      "eslint --fix --plugin tsc --rule 'tsc/config: [2, {configFile: \"./tsconfig.json\"}]'"
-    ]
   }
 }

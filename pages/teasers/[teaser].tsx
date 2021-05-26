@@ -27,7 +27,6 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
     adData && randomizeAds(adData.adCollection.items.slice(0));
 
   const router = useRouter();
-  console.log(router.pathname);
   //Used to make the meta description. Have to remove HTML tags from it first.
   const strippedBody =
     teaser && (teaser.body as string).replace(/(<([^>]+)>)/gi, "");
