@@ -37,3 +37,4 @@ const sixtyOrOlder  = (subInfo: SubscriptionContactInfo): boolean => {
   }
   return false;
 }
+

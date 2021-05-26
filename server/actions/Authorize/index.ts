@@ -1,6 +1,7 @@
 const ApiContracts = require("authorizenet").APIContracts;
 const ApiControllers = require("authorizenet").APIControllers;
 import urls from "utils/urls";
+
 export default class Authorize {
   merchantAuthenticationType;
   constructor() {
@@ -21,6 +22,7 @@ export default class Authorize {
     const setting1 = new ApiContracts.SettingType();
     setting1.setSettingName("hostedPaymentButtonOptions");
     setting1.setSettingValue('{"text": "Pay"}');
+   
     const setting2 = new ApiContracts.SettingType();
     setting2.setSettingName("hostedPaymentOrderOptions");
     setting2.setSettingValue('{"show": false}');
