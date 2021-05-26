@@ -6,6 +6,7 @@ import SectionHeader from "components/SectionHeader";
 import Loader from "components/Loader";
 import urls from "utils/urls";
 import Router from "next/router";
+import {NextPageContext} from "next";
 interface IFormValues {
   businessName?: string | undefined;
   url?: string | undefined;
