@@ -60,7 +60,7 @@ export async function getServerSideProps(context: NextPageContext) {
       cookie: cookie!,
     },
   });
-  //If the cookie is present, redirect to the admin page.
+  //If the cookie is present and valid, redirect to the admin page.
   if (resp.status === 200 && context.req) {
     return { 
       redirect: {
