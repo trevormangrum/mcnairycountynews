@@ -9,6 +9,7 @@ import InputGroup from "components/InputGroup";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
   const options = {
     pageTitle: true,
     pageTitleText: "Contact Us",
@@ -95,6 +96,9 @@ export default function ContactPage() {
         <button className="button" disabled={isSubmitting}>Send Message</button>
         {isSubmitting && (
           <Loader/>
+        )}
+        {success && (
+          <p>Message successfully sent!</p>
         )}
       </form>
     </Layout>

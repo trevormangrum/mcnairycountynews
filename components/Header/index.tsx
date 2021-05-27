@@ -12,9 +12,9 @@ const Header: React.FC = () => {
             <Link href="/advertising">
               <a href="/advertising">Advertising</a>
             </Link>
-            <Link href="/archives">
-              <a href="/archives">Archives</a>
-            </Link>
+            {/* <Link href="/archives"> */}
+            {/*   <a href="/archives">Archives</a> */}
+            {/* </Link> */}
             <Link href="/about">
               <a href="/about">About Us</a>
             </Link>
