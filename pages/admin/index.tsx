@@ -25,19 +25,19 @@ const AdminHomePage: NextPage = () => {
             </a>
           </Link>
         </div>
-        <SectionHeader text="Archives" />
-        <div className="admin-links">
-          <Link href="/admin/archives/add">
-            <a className="button button-admin" href="/admin/archives/add">
-              Add to archives
-            </a>
-          </Link>
-          <Link href="/admin/archives/delete">
-            <a className="button button-admin" href="/admin/archives/delete">
-              Remove from archives
-            </a>
-          </Link>
-        </div>
+        {/* <SectionHeader text="Archives" /> */}
+        {/* <div className="admin-links"> */}
+        {/*   <Link href="/admin/archives/add"> */}
+        {/*     <a className="button button-admin" href="/admin/archives/add"> */}
+        {/*       Add to archives */}
+        {/*     </a> */}
+        {/*   </Link> */}
+        {/*   <Link href="/admin/archives/delete"> */}
+        {/*     <a className="button button-admin" href="/admin/archives/delete"> */}
+        {/*       Remove from archives */}
+        {/*     </a> */}
+        {/*   </Link> */}
+        {/* </div> */}
 
         <SectionHeader text="Advertisements" />
         <div className="admin-links">

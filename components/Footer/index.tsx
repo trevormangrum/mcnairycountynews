@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
                 <div className="footer-section">
                     <h2 className="footer-header">McNairy County News</h2>
                     <Link href="/subscribe"><a className="footer-link" href="">Subscribe</a></Link>
-                    <Link href="/archives"><a className="footer-link" href="">Archives</a></Link>
+                    {/* <Link href="/archives"><a className="footer-link" href="">Archives</a></Link> */}
                     <Link href="/advertising"><a className="footer-link" href="">Advertising</a></Link>
                 </div>
                 <div className="footer-section">
