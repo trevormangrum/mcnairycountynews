@@ -38,4 +38,5 @@ export default {
     subscribe: "/api/subscribe",
     login: "/api/login",
   },
+  authorizeSubscribe: prod ? "https://accept.authorize.net/payment/payment" : "https://test.authorize.net/payment/payment" 
 };
