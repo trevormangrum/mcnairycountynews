@@ -5,12 +5,18 @@ import urls from "utils/urls";
 const prod = process.env.NODE_ENV === "production";
 export default class Authorize {
   merchantAuthenticationType;
+  transactionKey;
+  loginID;
   constructor() {
+    this.transactionKey = prod
+      ? process.env.AUTHORIZE_PROD_TRANSACTION_KEY
+      : process.env.AUTHORIZE_TRANSACTION_KEY;
+    this.loginID = prod
+      ? process.env.AUTHORIZE_PROD_LOGIN_ID
+      : process.env.AUTHORIZE_LOGIN_ID;
     this.merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
-    this.merchantAuthenticationType.setName(prod ? process.env.AUTHORIZE_PROD_LOGIN_ID : process.env.AUTHORIZE_LOGIN_ID);
-    this.merchantAuthenticationType.setTransactionKey( prod ? 
-      process.env.AUTHORIZE_PROD_TRANSACTION_KEY : process.env.AUTHORIZE_TRANSACTION_KEY, 
-    );
+    this.merchantAuthenticationType.setName(this.loginID);
+    this.merchantAuthenticationType.setTransactionKey(this.transactionKey);
   }
 
   generateAcceptPage(price: string, cb: any) {
@@ -23,19 +29,20 @@ export default class Authorize {
     const setting1 = new ApiContracts.SettingType();
     setting1.setSettingName("hostedPaymentButtonOptions");
     setting1.setSettingValue('{"text": "Pay"}');
-   
+
     const setting2 = new ApiContracts.SettingType();
     setting2.setSettingName("hostedPaymentOrderOptions");
     setting2.setSettingValue('{"show": false}');
 
     const setting3 = new ApiContracts.SettingType();
     setting3.setSettingName("hostedPaymentReturnOptions");
-    setting3.setSettingValue(`{"showReceipt": true, "url": "${urls.baseUrl}", "urlText": "Return to MCN", "cancelUrl": "${urls.baseUrl}"  }`)
-    
+    setting3.setSettingValue(
+      `{"showReceipt": true, "url": "${urls.baseUrl}", "urlText": "Return to MCN", "cancelUrl": "${urls.baseUrl}"  }`
+    );
+
     const setting4 = new ApiContracts.SettingType();
     setting4.setSettingName("hostedPaymentCustomerOptions");
     setting4.setSettingValue(`{"showEmail": true, "requiredEmail": false}`);
-
 
     const settingList = [setting1, setting2, setting3, setting4];
     const alist = new ApiContracts.ArrayOfSetting();
