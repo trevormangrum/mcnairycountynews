@@ -4,7 +4,7 @@ import Head from "next/head";
 import SubscriptionOptions from "components/SubscriptionOptions";
 import SectionHeader from "components/SectionHeader";
 import InputGroup from "components/InputGroup";
-//TODO: Remove everything from form except for DOB, Veteran, SubOption. Gonna have to get creative on how to display the second button.
+import urls from "utils/urls";
 interface IFormValues {
   subOption: string | undefined;
   dob?: string | undefined;
@@ -105,7 +105,7 @@ export default function SubscribePage() {
         </button>
       </form>
       {token != "" && (
-        <form method="POST" action="https://test.authorize.net/payment/payment">
+        <form method="POST" action={urls.authorizeSubscribe}>
           <SectionHeader text="Proceed to Payment" />
           <p>Your subscription cost will be: ${subCost}. Clicking the button below will redirect you to the checkout screen, hosted by Authorize.Net</p>
           <input type="hidden" name="token" value={token} />
