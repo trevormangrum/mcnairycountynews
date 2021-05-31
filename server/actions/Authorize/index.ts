@@ -56,6 +56,8 @@ export default class Authorize {
     var ctrl = new ApiControllers.GetHostedPaymentPageController(
       getRequest.getJSON()
     );
+    //Set the environment to production.
+    ctrl.setEnvironment(prod ? "https://api2.authorize.net/xml/v1/request.api" : "https://apitest.authorize.net/xml/v1/request.api");
 
     ctrl.execute(function () {
       const apiResponse = ctrl.getResponse();
