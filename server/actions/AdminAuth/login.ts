@@ -8,8 +8,11 @@ export const login = (userData: User) => {
   if (
     userData.username != process.env.USERNAME ||
     userData.pass != process.env.PASSWORD
-  )
+  ) {
+    console.log(userData.username);
+    console.log(userData.pass);
     throw new Error("Invalid login credentials");
+  }
 
   return sign(
     {

@@ -8,7 +8,6 @@ export default function LoginPage() {
   const handleChange = (e: React.SyntheticEvent) => {
     e.persist();
     setValues(values => ({ ...values, [e.target.name]: e.target.value }));
-    console.log(values);
   };
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
