@@ -9,6 +9,8 @@ export const login = (userData: User) => {
     userData.username != process.env.USERNAME ||
     userData.pass != process.env.PASSWORD
   ) {
+    console.log("env var:", process.env.USERNAME);
+    console.log("env var:", process.env.PASSWORD);
     console.log(userData.username);
     console.log(userData.pass);
     throw new Error("Invalid login credentials");
