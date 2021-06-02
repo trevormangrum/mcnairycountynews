@@ -5,8 +5,10 @@ import cookie from "cookie";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const loginData = JSON.parse(req.body) as User;
+    console.log(loginData);
     const jwt = login(loginData);
     
+    console.log(jwt);
     res.setHeader(
       "Set-Cookie",
       cookie.serialize("auth", jwt, {
