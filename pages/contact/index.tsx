@@ -66,7 +66,7 @@ export default function ContactPage() {
       </div>
       <div className="contact-info">
         <FaFax className="contact-icon" />
-        <span>731-645-7048</span>
+        <span>731-645-7049</span>
         <span>(Fax)</span>
       </div>
 

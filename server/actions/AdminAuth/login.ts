@@ -6,18 +6,21 @@ export const login = (userData: User) => {
     throw new Error("Cannot have empty parameters.");
 
   if (
-    userData.username != process.env.USERNAME ||
-    userData.pass != process.env.PASSWORD
-  )
-    throw new Error("Invalid login credentials");
+    userData.username === (process.env.USERNAME as string) &&
+    userData.pass === (process.env.PASSWORD as string)
+  ) {
+    return sign(
+      {
+        role: "admin",
+      },
+      secret,
+      {
+        expiresIn: "7d",
+      }
+    );
+  } else {
+    throw new Error("Something went wrong with the login.");
+  }
 
-  return sign(
-    {
-      role: "admin",
-    },
-    secret,
-    {
-      expiresIn: "7d",
-    }
-  );
+  
 };
