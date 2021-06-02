@@ -5,10 +5,10 @@ import urls from "utils/urls";
 import { NextPageContext } from "next";
 export default function LoginPage() {
   const [values, setValues] = React.useState({});
+  const [loginError, setLoginError] = React.useState(false);
   const handleChange = (e: React.SyntheticEvent) => {
     e.persist();
     setValues(values => ({ ...values, [e.target.name]: e.target.value }));
-    console.log(values);
   };
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -17,6 +17,9 @@ export default function LoginPage() {
       body: JSON.stringify(values),
     });
     if (response.status === 200) window.location.reload();
+    if(response.status != 200) {
+      setLoginError(true);
+    }
   };
 
   return (
@@ -27,6 +30,7 @@ export default function LoginPage() {
           <Link href="/">
             <a href="/">Go Back</a>
           </Link>
+          {loginError && <p>There was an error with logging in. Please try again or contact the webmaster.</p>}
           <InputGroup
             inputType="text"
             inputName="username"
