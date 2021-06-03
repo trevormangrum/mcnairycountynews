@@ -35,6 +35,9 @@ export const addArticle = async (article: Article) => {
       image: {
         "en-US": article.image,
       },
+      highPrio: {
+        "en-US": article.highPrio == "Yes" ? true : false,
+      }
     },
   });
   await newArticle.publish();
