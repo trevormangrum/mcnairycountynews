@@ -9,6 +9,7 @@ export interface Article {
   image?: ContentfulAsset;
   teaser?: boolean;
   body?: string;
+  highPrio?: string;
 }
 export interface EmailMessage {
   email: string;

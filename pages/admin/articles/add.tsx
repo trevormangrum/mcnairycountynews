@@ -162,6 +162,14 @@ export default function CreateArticlePage() {
             value={articleValues.image}
             handleChange={handleArticleData}
           />
+          <InputGroup
+            inputType="radio"
+            inputName="highPrio"
+            inputPlaceholder="highPrio"
+            labelText="High Priority?"
+            value={articleValues.highPrio}
+            handleChange={handleArticleData}
+          />
           <ReactQuill
             theme="snow"
             placeholder="Enter the body of your teaser here..."
