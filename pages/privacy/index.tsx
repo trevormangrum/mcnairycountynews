@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
       <p>If you would like to opt-out of Google Analytics, you can do so by installing the <a href='https://tools.google.com/dlpage/gaoptout'>Google Analytics Opt-out Browser Extension</a>.</p>
       <p>All other data we collect is voluntarily submitted. To use our contact form and subscription purchasing services, you must voluntarily provide your data.</p>
       <SectionHeader text="Changes to our Privacy Policy" />
-      <p>This Privacy Policy may be revised over time as new features are added to the Terrific Tans website. We may change this Privacy Policy at any time by posting a revised version to our Website.</p>
+      <p>This Privacy Policy may be revised over time as new features are added to the McNairy County News website. We may change this Privacy Policy at any time by posting a revised version to our Website.</p>
     </Layout>
   );
 }
