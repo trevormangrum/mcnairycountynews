@@ -45,7 +45,12 @@ export default function addAdvertisementPage() {
     if (adValues.submissionError) {
       setAdValues({ ...adValues, ["submissionError"]: false });
     }
-    if (!adValues.businessName || !adValues.image || !adValues.priority) {
+    if (
+      !adValues.businessName ||
+      !adValues.image ||
+      !adValues.priority ||
+      !adValues.square
+    ) {
       console.log(adValues);
       setAdValues({ ...adValues, ["submissionError"]: true });
       return;
