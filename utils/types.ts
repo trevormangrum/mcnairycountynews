@@ -38,12 +38,13 @@ export interface Advertisement {
   businessName?: string;
   priority?: string;
   url?: string;
+  square?: boolean;
   image?: ContentfulAsset;
 }
 
 export interface SubscriptionContactInfo {
   dob?: string;
-  veteran?: string; 
+  veteran?: string;
   price?: number | string;
 }
 
@@ -51,5 +52,4 @@ export interface User {
   username: string;
   pass: string;
   role?: string;
-
 }

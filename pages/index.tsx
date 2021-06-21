@@ -43,6 +43,7 @@ export default function Home() {
                     <Teaser article={article} large={true} />{" "}
                     {ads && ads.length > 0 ? (
                       <Ad
+                        square={ads[0].square ? true : false}
                         imageUrl={ads[0].image?.url as string}
                         url={ads[0].url as string}
                       />
@@ -59,6 +60,7 @@ export default function Home() {
                     <Teaser article={article} large={false} />
                     {ads && ads.length > index / 3 ? (
                       <Ad
+                        square={ads[index / 3].square ? true : false}
                         imageUrl={ads[index / 3].image?.url as string}
                         url={ads[index / 3].url as string}
                       />
@@ -71,7 +73,6 @@ export default function Home() {
               return <Teaser article={article} large={false} />;
             }
           )}
-
       </Layout>
     </div>
   );

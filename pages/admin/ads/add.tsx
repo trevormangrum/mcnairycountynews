@@ -6,12 +6,13 @@ import SectionHeader from "components/SectionHeader";
 import Loader from "components/Loader";
 import urls from "utils/urls";
 import Router from "next/router";
-import {NextPageContext} from "next";
+import { NextPageContext } from "next";
 
 interface IFormValues {
   businessName?: string | undefined;
   url?: string | undefined;
   image?: File | Blob | undefined;
+  square?: boolean | undefined;
   submissionError?: boolean | undefined;
   [key: string]: string | Blob | Date | boolean | null | undefined;
 }
@@ -76,7 +77,13 @@ export default function addAdvertisementPage() {
       <Header />
       <div className="admin-wrapper">
         <SectionHeader text="Add to Advertisements" />
-        <p> Here you can add advertisements to the ad system on the site. Priority determines where the ads go. Priority 1 ads go on the individual teasers page. Priority 2 ads go into the teasers column on the home page. Priority 3 ads go into the sidebar.</p>
+        <p>
+          {" "}
+          Here you can add advertisements to the ad system on the site. Priority
+          determines where the ads go. Priority 1 ads go on the individual
+          teasers page. Priority 2 ads go into the teasers column on the home
+          page. Priority 3 ads go into the sidebar.
+        </p>
         <form>
           <InputGroup
             inputType="text"
@@ -110,6 +117,14 @@ export default function addAdvertisementPage() {
             value={adValues.priority}
             handleChange={handleAdData}
           />
+          <InputGroup
+            inputType="radio"
+            inputName="square"
+            inputPlaceholder="Should the Ad Be Square?"
+            labelText="Should the Ad Be Square?"
+            value={adValues.square}
+            handleChange={handleAdData}
+          />
           <button type="submit" onClick={handleSubmit} className="button">
             Add to Advertisements
           </button>
@@ -137,19 +152,19 @@ export async function getServerSideProps(context: NextPageContext) {
   const resp = await fetch(`${urls.baseUrl}${urls.api.admin.validate}`, {
     headers: {
       cookie: cookie!,
-    }
-  })
+    },
+  });
   //If the cookie is not present, redirect to the login page.
-  if(resp.status === 401 && !context.req) {
+  if (resp.status === 401 && !context.req) {
     void Router.replace(`${urls.baseUrl}${urls.pages.login}`);
     return { props: {} };
   }
-  if(resp.status === 401 && context.req) {
+  if (resp.status === 401 && context.req) {
     context.res?.writeHead(302, {
       Location: `${urls.baseUrl}`,
     });
     context.res?.end();
     return { props: {} };
   }
-  return { props: {} }
+  return { props: {} };
 }
