@@ -25,7 +25,11 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
   return (
     <aside className={`${"sidebar"} ${pageTitle ? "sidebar-margin" : ""}`}>
       {ads && ads.length > 0 ? (
-        <Ad imageUrl={ads[0].image?.url as string} url={ads[0].url as string} />
+        <Ad
+          square={ads[0].square ? true : false}
+          imageUrl={ads[0].image?.url as string}
+          url={ads[0].url as string}
+        />
       ) : (
         <DigitalAdPlaceholder />
       )}
@@ -33,7 +37,11 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
       <SocialMediaButton media="fb" />
       <SocialMediaButton media="ig" />
       {ads && ads.length > 1 ? (
-        <Ad imageUrl={ads[1].image?.url as string} url={ads[1].url as string} />
+        <Ad
+          square={ads[1].square ? true : false}
+          imageUrl={ads[1].image?.url as string}
+          url={ads[1].url as string}
+        />
       ) : (
         <DigitalAdPlaceholder />
       )}
@@ -45,7 +53,11 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
         </a>
       </Link>
       {ads && ads.length > 2 ? (
-        <Ad imageUrl={ads[2].image?.url as string} url={ads[2].url as string} />
+        <Ad
+          square={ads[2].square ? true : false}
+          imageUrl={ads[2].image?.url as string}
+          url={ads[2].url as string}
+        />
       ) : (
         <DigitalAdPlaceholder />
       )}
@@ -60,7 +72,11 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
         </a>
       </Link>
       {ads && ads.length > 3 ? (
-        <Ad imageUrl={ads[3].image?.url as string} url={ads[3].url as string} />
+        <Ad
+          square={ads[3].square ? true : false}
+          imageUrl={ads[3].image?.url as string}
+          url={ads[3].url as string}
+        />
       ) : (
         <DigitalAdPlaceholder />
       )}

@@ -31,7 +31,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
   const strippedBody =
     teaser && (teaser.body as string).replace(/(<([^>]+)>)/gi, "");
   if (router.isFallback) {
-    return <LoadingPage/>;
+    return <LoadingPage />;
   }
   return (
     <Layout>
@@ -62,7 +62,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
               : strippedBody
           }
         />
-        <meta property="og:image" content={teaser && teaser?.image?.url}/>
+        <meta property="og:image" content={teaser && teaser?.image?.url} />
       </Head>
       {teaser && (
         <div>
@@ -84,6 +84,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
           <p>Written by: {teaser.author}</p>
           {ads && ads.length > 0 ? (
             <Ad
+              square={ads[0].square ? true : false}
               imageUrl={ads[0].image?.url as string}
               url={ads[0].url as string}
             />
@@ -97,6 +98,7 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
 
           {ads && ads.length > 1 ? (
             <Ad
+              square={ads[1].square ? true : false}
               imageUrl={ads[1].image?.url as string}
               url={ads[1].url as string}
             />

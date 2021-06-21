@@ -14,4 +14,7 @@
   & > p {
     @include ab.text-primary;
   }
+  &-square {
+    height: 464px;
+  }
 }

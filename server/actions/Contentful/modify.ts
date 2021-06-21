@@ -37,7 +37,7 @@ export const addArticle = async (article: Article) => {
       },
       highPrio: {
         "en-US": article.highPrio == "Yes" ? true : false,
-      }
+      },
     },
   });
   await newArticle.publish();
@@ -58,7 +58,6 @@ export const updateArticle = async () => {
  * @param id The id of the article/archive to be deleted.
  */
 export const deleteEntry = async (id: string) => {
-
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
   const entry = await environment.getEntry(id);
@@ -115,7 +114,6 @@ export async function uploadAsset(asset: File) {
       },
     },
   });
-
 
   newAsset = await newAsset.processForAllLocales();
   newAsset = await newAsset.publish();
@@ -175,9 +173,11 @@ export const addAdvertisement = async (ad: Advertisement) => {
       priority: {
         "en-US": ad.priority,
       },
+      square: {
+        "en-US": ad.square,
+      },
     },
   });
   await newAd.publish();
   if (!newAd) throw new Error("Error creating new ad.");
 };
-

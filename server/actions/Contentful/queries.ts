@@ -7,7 +7,7 @@ export default {
         articleCollection(
           where: { teaser: true }
           limit: 12
-          order: [posted_DESC, highPrio_DESC],
+          order: [posted_DESC, highPrio_DESC]
         ) {
           items {
             sys {
@@ -48,6 +48,7 @@ export default {
             image
             url
             priority
+            square
           }
         }
       }
@@ -59,6 +60,7 @@ export default {
             businessName
             image
             url
+            square
           }
         }
       }
