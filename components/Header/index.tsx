@@ -21,9 +21,6 @@ const Header: React.FC = () => {
             <Link href="/contact">
               <a href="/contact">Contact Us</a>
             </Link>
-            <Link href="/login">
-              <a href="/login">Login</a>
-            </Link>
           </div>
         </nav>
         <nav className="lower-nav">
@@ -42,7 +39,13 @@ const Header: React.FC = () => {
               Public Notices
             </a>
 
-              <a href="https://www.shackelfordfuneraldirectors.com/obituaries/" target="_blank" rel="noopener">Obituaries</a>
+            <a
+              href="https://www.shackelfordfuneraldirectors.com/obituaries/"
+              target="_blank"
+              rel="noopener"
+            >
+              Obituaries
+            </a>
             <Link href="/subscribe">
               <a href="/subscribe">Subscribe</a>
             </Link>

@@ -17,7 +17,7 @@ export default function LoginPage() {
       body: JSON.stringify(values),
     });
     if (response.status === 200) window.location.reload();
-    if(response.status != 200) {
+    if (response.status != 200) {
       setLoginError(true);
     }
   };
@@ -26,11 +26,16 @@ export default function LoginPage() {
     <main className="layout-container login-container">
       <div className="wrapper">
         <form className="login-box" onSubmit={handleSubmit}>
-          <h1>Login</h1>
+          <h1>Admin Login</h1>
           <Link href="/">
             <a href="/">Go Back</a>
           </Link>
-          {loginError && <p>There was an error with logging in. Please try again or contact the webmaster.</p>}
+          {loginError && (
+            <p>
+              There was an error with logging in. Please try again or contact
+              the webmaster.
+            </p>
+          )}
           <InputGroup
             inputType="text"
             inputName="username"
@@ -66,11 +71,11 @@ export async function getServerSideProps(context: NextPageContext) {
   });
   //If the cookie is present and valid, redirect to the admin page.
   if (resp.status === 200 && context.req) {
-    return { 
+    return {
       redirect: {
         permanent: false,
         destination: `${urls.baseUrl}${urls.pages.admin.index}`,
-    }
+      },
     };
   }
   return { props: {} };
