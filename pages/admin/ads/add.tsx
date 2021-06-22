@@ -12,7 +12,7 @@ interface IFormValues {
   businessName?: string | undefined;
   url?: string | undefined;
   image?: File | Blob | undefined;
-  square?: boolean | undefined;
+  square?: string | undefined;
   submissionError?: boolean | undefined;
   [key: string]: string | Blob | Date | boolean | null | undefined;
 }

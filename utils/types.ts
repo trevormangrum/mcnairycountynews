@@ -38,7 +38,7 @@ export interface Advertisement {
   businessName?: string;
   priority?: string;
   url?: string;
-  square?: boolean;
+  square?: string;
   image?: ContentfulAsset;
 }
 
