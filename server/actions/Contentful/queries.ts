@@ -34,6 +34,19 @@ export default {
         }
       }
     `,
+    getTeaserById: gql`
+      query getTeaserById($id: String!) {
+        articleCollection(where: { sys: { id: $id } }, limit: 1) {
+          items {
+            title
+            author
+            image
+            posted
+            body
+          }
+        }
+      }
+    `,
   },
   subscribers: {},
   ads: {

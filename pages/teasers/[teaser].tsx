@@ -113,10 +113,10 @@ const IndividualTeaserPage: NextPage<Props> = ({ teaser }) => {
 export default IndividualTeaserPage;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const title = (context.params?.teaser as string).replace(/-/g, " ");
+  const id = context.params?.teaser as string;
   const response = await client.query({
-    query: queries.articles.getTeaserByTitle,
-    variables: { title },
+    query: queries.articles.getTeaserById,
+    variables: { id },
   });
 
   return {
@@ -131,7 +131,7 @@ export async function getStaticPaths() {
     query: queries.articles.getTeasers,
   });
   const paths = response.data.articleCollection.items.map(article => {
-    return { params: { teaser: article.title } };
+    return { params: { teaser: article.sys.id } };
   });
   return {
     paths: paths,
