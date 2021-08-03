@@ -45,6 +45,7 @@ export interface Advertisement {
 export interface SubscriptionContactInfo {
   dob?: string;
   veteran?: string;
+  gift?: string;
   price?: number | string;
 }
 
