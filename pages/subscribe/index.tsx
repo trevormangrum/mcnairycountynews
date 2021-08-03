@@ -93,6 +93,14 @@ export default function SubscribePage() {
           handleChange={handleChange}
         />
         <InputGroup
+          inputName="gift"
+          inputType="radio"
+          inputPlaceholder="Yes"
+          labelText="Is this a gift?"
+          value={values.gift}
+          handleChange={handleChange}
+        />
+        <InputGroup
           inputName="zip"
           inputType="text"
           inputPlaceholder="Zip Code"
@@ -107,7 +115,7 @@ export default function SubscribePage() {
       {token != "" && (
         <form method="POST" action={urls.authorizeSubscribe}>
           <SectionHeader text="Proceed to Payment" />
-          <p>Your subscription cost will be: ${subCost}. Clicking the button below will redirect you to the checkout screen, hosted by Authorize.Net</p>
+          <p>Your subscription cost will be: ${subCost}. Clicking the button below will redirect you to the checkout screen, hosted by Authorize.Net. <b>NOTE: If you are purchasing as a gift, please enter the address of the gift recipient into the shipping address fields.</b></p>
           <input type="hidden" name="token" value={token} />
           <button type="submit" className="button">
             Proceed to payment

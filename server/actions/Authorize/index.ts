@@ -19,7 +19,7 @@ export default class Authorize {
     this.merchantAuthenticationType.setTransactionKey(this.transactionKey);
   }
 
-  generateAcceptPage(price: string, cb: any) {
+  generateAcceptPage(price: string, gift: string, cb: any) {
     const transactionRequestType = new ApiContracts.TransactionRequestType();
     transactionRequestType.setTransactionType(
       ApiContracts.TransactionTypeEnum.AUTHCAPTURETRANSACTION
@@ -43,8 +43,15 @@ export default class Authorize {
     const setting4 = new ApiContracts.SettingType();
     setting4.setSettingName("hostedPaymentCustomerOptions");
     setting4.setSettingValue(`{"showEmail": true, "requiredEmail": false}`);
+    let setting5 = new ApiContracts.SettingType();
+    setting5.setSettingName("hostedPaymentShippingAddressOptions");
+    if(gift === "Yes") {
+      setting5.setSettingValue(`{"show": true, "required": true}`)
+    } else {
+      setting5.setSettingValue(`{"show": false, "required": false}`)
+    }
 
-    const settingList = [setting1, setting2, setting3, setting4];
+    const settingList = [setting1, setting2, setting3, setting4, setting5];
     const alist = new ApiContracts.ArrayOfSetting();
     alist.setSetting(settingList);
 
