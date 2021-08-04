@@ -57,14 +57,14 @@ export default function AboutPage() {
           position="Staff Writer/Reporter"
         />
         <Employee
-          name="Ethan Huggins"
-          email="ethanhuggins751@hotmail.com"
+          name="Joel Counce"
+          email="joel.counce@gmail.com"
           position="Sports Writer"
-          image="#"
+          image="joel.JPG"
         />
         <Employee
           name="Tom Evans"
-          image="#"
+          image="tom.JPG"
           position="Founder/Sports Writer"
           email="tom@mcnairycountynews.com"
         />
