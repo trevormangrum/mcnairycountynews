@@ -24,7 +24,7 @@ export default function AdvertisingPage() {
       <p>
         If you are interested in having a digital advertisement, email us at{" "}
         <a href="mailto:suzanne@mcnairycountynews.com" className="inline-link">
-          suzanne@mcnairyconutynews.com
+          suzanne@mcnairycountynews.com
         </a>{" "}
         or call us at{" "}
         <a href="tel:7316457048" className="inline-link">
