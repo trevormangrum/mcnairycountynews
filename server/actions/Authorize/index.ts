@@ -19,12 +19,24 @@ export default class Authorize {
     this.merchantAuthenticationType.setTransactionKey(this.transactionKey);
   }
 
-  generateAcceptPage(price: string, gift: string, cb: any) {
+  generateAcceptPage(price: string, gift: string, renewal: string, cb: any) {
     const transactionRequestType = new ApiContracts.TransactionRequestType();
     transactionRequestType.setTransactionType(
       ApiContracts.TransactionTypeEnum.AUTHCAPTURETRANSACTION
     );
     transactionRequestType.setAmount(price);
+
+
+    const orderDetails = new ApiContracts.OrderType();
+    // Set product description based on whether or not it's a renewal
+    if(renewal == "Yes") {
+        orderDetails.setDescription('MCN Subscription Renewal');
+    } else {
+        orderDetails.setDescription('MCN New Subscription');
+    }
+    transactionRequestType.setOrder(orderDetails);
+
+
 
     const setting1 = new ApiContracts.SettingType();
     setting1.setSettingName("hostedPaymentButtonOptions");
@@ -76,8 +88,6 @@ export default class Authorize {
           response.getMessages().getResultCode() ==
           ApiContracts.MessageTypeEnum.OK
         ) {
-          console.log("Hosted payment page token :");
-          console.log(response.getToken());
         } else {
           //console.log('Result Code: ' + response.getMessages().getResultCode());
           console.log(
