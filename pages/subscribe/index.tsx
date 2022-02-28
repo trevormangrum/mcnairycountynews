@@ -13,6 +13,8 @@ interface IFormValues {
   state?: string | undefined;
   address?: string | undefined;
   zip?: string | undefined;
+  gift?: string | undefined;
+  renewal?: string | undefined;
   submissionError?: boolean | undefined;
   [key: string]: string | boolean | null | undefined;
 }
@@ -98,6 +100,14 @@ export default function SubscribePage() {
           inputPlaceholder="Yes"
           labelText="Is this a gift?"
           value={values.gift}
+          handleChange={handleChange}
+        />
+        <InputGroup
+          inputName="renewal"
+          inputType="radio"
+          inputPlaceholder="Yes"
+          labelText="Are you renewing your subscription?"
+          value={values.renewal}
           handleChange={handleChange}
         />
         <InputGroup

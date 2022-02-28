@@ -7,7 +7,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const subInfo = JSON.parse(req.body) as SubscriptionContactInfo;
     const a = new Authorize();
     const cost = calculateSubscriptionPrice(subInfo);
-    a.generateAcceptPage(cost, subInfo.gift, async function (response) {
+    a.generateAcceptPage(cost, subInfo.gift, subInfo.renewal, async function (response) {
       res.status(200).json({
         payload: {
           token: response.getToken(),

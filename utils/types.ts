@@ -46,6 +46,7 @@ export interface SubscriptionContactInfo {
   dob?: string;
   veteran?: string;
   gift?: string;
+  renewal?: string;
   price?: number | string;
 }
 
