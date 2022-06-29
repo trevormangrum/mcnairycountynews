@@ -6,16 +6,16 @@ import SectionHeader from "components/SectionHeader";
 import InputGroup from "components/InputGroup";
 import urls from "utils/urls";
 interface IFormValues {
-  subOption: string | undefined;
-  dob?: string | undefined;
-  veteran?:  string | undefined; // Yes or No
+  subOption: string;
+  dob?: string;
+  veteran?:  string; // Yes or No
   //Used to determine price if in state/out of state.
-  state?: string | undefined;
-  address?: string | undefined;
-  zip?: string | undefined;
-  gift?: string | undefined;
-  renewal?: string | undefined;
-  submissionError?: boolean | undefined;
+  state?: string;
+  address?: string;
+  zip?: string;
+  gift?: string;
+  renewal?: string;
+  submissionError?: boolean; 
   [key: string]: string | boolean | null | undefined;
 }
 export default function SubscribePage() {
@@ -44,14 +44,16 @@ export default function SubscribePage() {
     if (values.submissionError) {
       delete values.submissionError;
     }
-
-    for (let key in values) {
+    console.log(values)
       //If there's a key in the values object that has no value, then we return and display an error.
-      if (!values[key]) {
+      if (!values["zip"] || !values["subOption"] || 
+          !values["dob"] || !values["veteran"] || 
+          !values["renewal"] ||
+          !values["gift"]) {
+          console.log("error");
         setValues(values => ({ ...values, ["submissionError"]: true }));
         return;
       }
-    }
     const response = await fetch("/api/subscribe", {
       method: "POST",
       body: JSON.stringify(values),
@@ -121,6 +123,9 @@ export default function SubscribePage() {
         <button type="submit" onClick={handleSubmit} className="button">
           Continue
         </button>
+        {values.submissionError && (
+        <p>Error submitting form. Please ensure that all fields have been filled out.</p>
+        )}
       </form>
       {token != "" && (
         <form method="POST" action={urls.authorizeSubscribe}>

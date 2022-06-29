@@ -26,7 +26,7 @@ const InputGroup: React.FC<Props> = ({
             type={inputType}
             name={inputName}
             placeholder={inputPlaceholder}
-            value={value || null}
+            value={value || ""}
             onChange={handleChange}
             required
           />
