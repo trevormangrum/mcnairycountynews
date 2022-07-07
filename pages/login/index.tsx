@@ -49,7 +49,7 @@ export default function LoginPage() {
             inputName="pass"
             inputPlaceholder="Password"
             labelText="Password"
-            value={values.password}
+            value={values.pass}
             handleChange={handleChange}
           />
           <button className="button" type="submit">
