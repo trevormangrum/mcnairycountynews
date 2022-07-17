@@ -19,7 +19,7 @@ export default function AboutPage() {
         />
       </Head>
       <SectionHeader text="By McNairy Countians, For McNairy Countians" />
-      <img className="mcn-img" src="storefront.jpg" alt="McNairy County News" />
+      <img className="mcn-img" src="new_storefront.jpg" alt="McNairy County News" />
       <p>
         Founded in 2008, the McNairy County News is truly a “county paper”. The
         employees take pride in publishing a weekly paper that highlights real
