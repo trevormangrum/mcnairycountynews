@@ -19,7 +19,7 @@ const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 interface IFormValues {
   title?: string | undefined;
   author?: string | undefined;
-  date?: string | Date | undefined;
+  posted?: string | Date | undefined;
   image?: File | Blob | undefined;
   body?: string | undefined;
   error?: boolean | undefined;
@@ -151,10 +151,10 @@ export default function CreateArticlePage() {
           />
           <InputGroup
             inputType="date"
-            inputName="date"
+            inputName="posted"
             inputPlaceholder="mm-dd-yyyy"
             labelText="Date Posted"
-            value={articleValues.date}
+            value={articleValues.posted}
             handleChange={handleArticleData}
           />
           <InputGroup
