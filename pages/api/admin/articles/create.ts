@@ -16,7 +16,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       async (err: string, fields: formidable.Fields, files: any) => {
         const article: Article = fields;
         console.log(article);
-        article.image = await uploadAsset(files.image);
+        if (article.image) {
+          console.log("Image is there");
+        }
+        if (files.image != undefined) {
+          article.image = await uploadAsset(files.image);
+        }
         await addArticle(article);
         res.status(200).json({
           payload: {},

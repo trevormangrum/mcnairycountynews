@@ -86,10 +86,11 @@ export default function CreateArticlePage() {
     if (articleValues.submissionError) {
       setArticleValues({ ...articleValues, ["submissionError"]: false });
     }
-    if (!articleValues.image) {
-      setArticleValues({ ...articleValues, ["submissionError"]: true });
-      return;
-    }
+    //Make image optional.
+    // if (!articleValues.image) {
+    //   setArticleValues({ ...articleValues, ["submissionError"]: true });
+    //   return;
+    // }
     if (!articleValues.body) {
       setArticleValues({ ...articleValues, ["error"]: true });
       return;
