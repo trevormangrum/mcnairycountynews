@@ -5,13 +5,28 @@ import SectionHeader from "components/SectionHeader";
 import Link from "next/link";
 import Router from "next/router";
 import urls from "utils/urls";
+import React from "react";
 
 const AdminHomePage: NextPage = () => {
+  const handleLogout = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    const response = await fetch("/api/logout");
+    if (response.status == 200) {
+      window.location.reload();
+    }
+  };
   return (
     <main className="admin-page">
       <Header />
       <div className="admin-wrapper">
         <h1>MCN Admin Portal</h1>
+        <button
+          className="button button-admin button-center"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
         <SectionHeader text="Articles/Teasers" />
         <div className="admin-links">
           <Link href="/admin/articles/add">
@@ -66,20 +81,19 @@ export async function getServerSideProps(context: NextPageContext) {
   const resp = await fetch(`${urls.baseUrl}${urls.api.admin.validate}`, {
     headers: {
       cookie: cookie!,
-    }
-  })
+    },
+  });
   //If the cookie is not present, redirect to the login page.
-  if(resp.status === 401 && !context.req) {
+  if (resp.status === 401 && !context.req) {
     void Router.replace(`${urls.baseUrl}${urls.pages.login}`);
     return { props: {} };
   }
-  if(resp.status === 401 && context.req) {
+  if (resp.status === 401 && context.req) {
     context.res?.writeHead(302, {
       Location: `${urls.baseUrl}`,
     });
     context.res?.end();
     return { props: {} };
   }
-  return { props: {} }
+  return { props: {} };
 }
-

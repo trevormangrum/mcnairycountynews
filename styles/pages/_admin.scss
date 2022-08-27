@@ -6,6 +6,7 @@
 
 .admin-wrapper {
   @include ab.width-default;
+  @include ab.flex-column;
   align-self: center;
   & > h1 {
     text-align: center;
@@ -36,7 +37,7 @@
   @include ab.flex-column;
 }
 .admin-item {
-  background:white;
+  background: white;
   height: 100px;
   @include ab.flex-row;
   align-items: center;
