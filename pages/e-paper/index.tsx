@@ -4,7 +4,7 @@ import SectionHeader from "components/SectionHeader";
 import InputGroup from "components/InputGroup";
 import { useRouter } from "next/router";
 import Loader from "components/Loader";
-import { Head } from "next/document";
+import Head from "next/head";
 export default function EPaperPage() {
   const [code, setCode] = React.useState("");
   const [error, setError] = React.useState({ status: false, message: "" });
