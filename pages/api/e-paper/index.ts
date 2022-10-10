@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { codeValid } from "server/actions/Contentful/code";
+import { getDigitalEdition } from "server/actions/Contentful/e-paper";
 
 export default async function handler(
   req: NextApiRequest,
@@ -6,8 +8,15 @@ export default async function handler(
 ) {
   try {
     console.log(req.body);
-    res.status(200).json({});
+    const isValid = await codeValid(req.body);
+    if (isValid) {
+      const url = await getDigitalEdition();
+      res.status(200).json({ url: url });
+    } else {
+      res.status(400).json({});
+    }
   } catch (error) {
+    console.error(error);
     res.status(500).json({});
   }
 }

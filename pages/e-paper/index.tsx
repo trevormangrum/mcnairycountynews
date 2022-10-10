@@ -2,11 +2,14 @@ import React from "react";
 import Layout from "components/Layout";
 import SectionHeader from "components/SectionHeader";
 import InputGroup from "components/InputGroup";
+import { useRouter } from "next/router";
 export default function EPaperPage() {
   const [code, setCode] = React.useState("");
   const [error, setError] = React.useState({ status: false, message: "" });
+  const router = useRouter();
 
   const handleChange = (e: React.SyntheticEvent) => {
+    e.persist();
     const target = e.target as HTMLInputElement;
     setCode(target.value);
   };
@@ -18,10 +21,23 @@ export default function EPaperPage() {
       setError({ status: true, message: "Please enter a code." });
       return;
     }
+    setError({ status: false, message: "" });
     const response = await fetch("/api/e-paper", {
       method: "POST",
       body: code,
     });
+    if (response.status == 200) {
+      const data = await response.json();
+      console.log(data);
+      router.push(data.url);
+    } else if (response.status == 400) {
+      setError({ status: true, message: "The code you entered was invalid." });
+    } else {
+      setError({
+        status: true,
+        message: "Something went wrong. Please try again later.",
+      });
+    }
   };
   return (
     <Layout>
