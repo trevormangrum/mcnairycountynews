@@ -130,39 +130,6 @@ export async function uploadAsset(asset: File) {
     };
   }
 }
-export async function uploadDigitalEditionFile(asset: File) {
-  const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
-  const environment = await space.getEnvironment("master");
-  let newAsset = await environment.createAssetFromFiles({
-    fields: {
-      title: {
-        "en-US": asset.name as string,
-      },
-      description: {
-        "en-US": "Image description",
-      },
-      file: {
-        "en-US": {
-          contentType: asset.type as string,
-          fileName: asset.name as string,
-          file: fs.readFileSync(asset.path),
-        },
-      },
-    },
-  });
-
-  newAsset = await newAsset.processForAllLocales();
-  newAsset = await newAsset.publish();
-
-  if (!newAsset) {
-    throw new Error("Asset creation unsuccessful.");
-  } else {
-    //Delete image from local storage before ending upload
-    fs.unlinkSync(asset.path);
-    //The url is returned without the http/https, so it's added here.
-    return newAsset;
-  }
-}
 
 /**
  * Add to archives.

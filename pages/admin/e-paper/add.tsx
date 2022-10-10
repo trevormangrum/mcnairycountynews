@@ -1,5 +1,6 @@
 import Header from "components/Header";
 import InputGroup from "components/InputGroup";
+import Loader from "components/Loader";
 import { NextPageContext } from "next";
 import Head from "next/head";
 import Router from "next/router";
@@ -31,12 +32,14 @@ export default function AdminEPaperPage() {
       fd.append(key, dEdition[key] as Blob);
     }
 
+    setLoading(true);
     const response = await fetch("/api/admin/e-paper/add", {
       method: "POST",
       body: fd,
     });
 
     if (response.status == 200) {
+      setLoading(false);
       window.location.reload();
     } else {
       setError({
@@ -82,6 +85,7 @@ export default function AdminEPaperPage() {
         >
           Upload Digital Edition
         </button>
+        {loading && <Loader />}
         {error.status && <p style={{ color: "red" }}>{error.message}</p>}
       </div>
     </main>

@@ -1,6 +1,6 @@
 import { createClient } from "contentful-management";
 import Formidable from "formidable";
-import { deleteAssetByID, uploadDigitalEditionFile } from "./modify";
+import { deleteAssetByID, uploadAsset } from "./modify";
 import fs from "fs";
 const client = createClient({
   accessToken: process.env.CONTENTFUL_MANAGEMENT_KEY as string,
@@ -12,11 +12,8 @@ export const getDigitalEdition = async () => {
   const entry = await environment.getEntry(
     process.env.DIGITAL_EDITION_ENTRY_ID
   );
-  const ePaper = await environment.getAsset(
-    entry.fields["ePaper"]["en-US"]["sys"]["id"]
-  );
-  const url = ePaper.fields["file"]["en-US"]["url"];
-  return "https:" + url;
+  const url = entry.fields["dEdition"]["en-US"]["url"];
+  return url;
 };
 
 export const uploadDigitalEdition = async (file: Formidable.File) => {
@@ -25,17 +22,12 @@ export const uploadDigitalEdition = async (file: Formidable.File) => {
   const entry = await environment.getEntry(
     process.env.DIGITAL_EDITION_ENTRY_ID
   );
-  const ePaper = await environment.getAsset(
-    entry.fields["ePaper"]["en-US"]["sys"]["id"]
-  );
+  if (entry.fields.dEdition) {
+    const dEdition = entry.fields.dEdition["en-US"];
+    await deleteAssetByID(dEdition.assetID);
+  }
   //Get rid of the current paper if it exists.
-  console.log(ePaper);
-  ePaper.fields["file"] = {
-    "en-US": {
-      contentType: file.type as string,
-      fileName: file.name as string,
-      file: fs.readFileSync(file.path),
-    },
-  };
+  const f = await uploadAsset(file);
+  entry.fields["dEdition"] = { "en-US": f };
   await entry.update();
 };
