@@ -15,7 +15,7 @@ export const codeValid = async (code: string) => {
 };
 
 export const generateCode = async () => {
-  const code = randomBytes(16).toString("hex");
+  const code = randomBytes(5).toString("hex");
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
   const entry = await environment.getEntry(process.env.CODE_ENTRY_ID);

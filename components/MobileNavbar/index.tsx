@@ -24,9 +24,9 @@ const MobileNavbar: React.FC<Props> = ({ open }) => {
       <Link href="/advertising">
         <a href="/advertising">Advertising</a>
       </Link>
-      {/* <Link href="/archives"> */}
-      {/*   <a href="/archives">Archives</a> */}
-      {/* </Link> */}
+      <Link href="/e-paper">
+        <a href="/e-paper">Digital Edition Access</a>
+      </Link>
 
       <a target="_blank" rel="noopener" href="https://www.tnpublicnotice.com/">
         Public Notices
