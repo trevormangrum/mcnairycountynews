@@ -174,7 +174,7 @@ export const addAdvertisement = async (ad: Advertisement) => {
         "en-US": ad.priority,
       },
       square: {
-        "en-US": (ad.square === "Yes") ? true : false,
+        "en-US": ad.square === "Yes" ? true : false,
       },
     },
   });

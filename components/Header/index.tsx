@@ -9,12 +9,12 @@ const Header: React.FC = () => {
       <div className="container">
         <nav className="upper-nav">
           <div className="wrapper">
+            <Link href="/e-paper">
+              <a href="/e-paper">Digital Edition Access</a>
+            </Link>
             <Link href="/advertising">
               <a href="/advertising">Advertising</a>
             </Link>
-            {/* <Link href="/archives"> */}
-            {/*   <a href="/archives">Archives</a> */}
-            {/* </Link> */}
             <Link href="/about">
               <a href="/about">About Us</a>
             </Link>

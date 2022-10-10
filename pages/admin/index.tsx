@@ -40,6 +40,15 @@ const AdminHomePage: NextPage = () => {
             </a>
           </Link>
         </div>
+        <SectionHeader text="E-Paper" />
+        <div className="admin-links">
+          <a className="button button-admin" href="/admin/e-paper/add">
+            Add Digital Edition
+          </a>
+          <a className="button button-admin" href="/admin/e-paper/code">
+            View Digital Edition Code
+          </a>
+        </div>
         {/* <SectionHeader text="Archives" /> */}
         {/* <div className="admin-links"> */}
         {/*   <Link href="/admin/archives/add"> */}

@@ -1,13 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { login } from "server/actions/AdminAuth/login";
-import { User} from "utils/types";
+import { User } from "utils/types";
 import cookie from "cookie";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const loginData = JSON.parse(req.body) as User;
-    console.log(loginData);
     const jwt = login(loginData);
-    
+
     console.log(jwt);
     res.setHeader(
       "Set-Cookie",
@@ -20,8 +19,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       })
     );
     res.status(200).json({
-        payload: {},
-    })
+      payload: {},
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({
