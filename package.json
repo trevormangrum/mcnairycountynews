@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "^18.0.0"
+  },
   "dependencies": {
     "@apollo/client": "^3.3.12",
     "@contentful/rich-text-html-renderer": "^14.1.2",
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "@types/cookie": "^0.4.0",
-
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.12",
     "@types/formidable": "^1.2.1",
