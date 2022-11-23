@@ -7,9 +7,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    console.log(req.body);
     const isValid = await codeValid(req.body);
     if (isValid) {
+      console.log("Code is valid.");
       const url = await getDigitalEdition();
       res.status(200).json({ url: url });
     } else {

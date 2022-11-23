@@ -83,10 +83,13 @@ export async function deleteAssetByID(ID: string) {
   const space = await client.getSpace(process.env.CONTENTFUL_SPACE as string);
   const environment = await space.getEnvironment("master");
   const asset = await environment.getAsset(ID);
+  console.log(asset);
 
-  //Before an asset can be deleted, it has to be unpublished.
-  await asset.unpublish();
-  await asset.delete();
+  if (asset) {
+    //Before an asset can be deleted, it has to be unpublished.
+    await asset.unpublish();
+    await asset.delete();
+  }
 }
 /**
 
