@@ -115,8 +115,8 @@ export default function SubscribePage() {
         <InputGroup
           inputName="zip"
           inputType="text"
-          inputPlaceholder="Zip Code"
-          labelText="Zip Code"
+          inputPlaceholder="Subscription Zip Code"
+          labelText="Subscription Zip Code"
           value={values.zip}
           handleChange={handleChange}
         />
