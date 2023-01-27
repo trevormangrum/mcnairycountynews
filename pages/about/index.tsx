@@ -68,6 +68,12 @@ export default function AboutPage() {
           position="Founder/Sports Writer"
           email="tom@mcnairycountynews.com"
         />
+        <Employee
+          name="Jon King"
+          image="jon.jpg"
+          position="Advertising Sales"
+          email="ads@mcnairycountynews.com"
+        />
       </div>
     </Layout>
   );

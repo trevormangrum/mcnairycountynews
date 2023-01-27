@@ -33,7 +33,7 @@ export default function AdvertisingPage() {
         .
       </p>
       <SectionHeader text="Advertising Rate Card" />
-      <iframe className="embedded-pdf" src="/rates-2022.pdf"></iframe>
+      <iframe className="embedded-pdf" src="/rates-2023.pdf"></iframe>
     </Layout>
   );
 }
