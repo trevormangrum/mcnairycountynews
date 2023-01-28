@@ -6,22 +6,9 @@ const Footer: React.FC = () => {
       <div className="wrapper">
         <div className="footer-section">
           <h2 className="footer-header">McNairy County News</h2>
-          <Link href="/subscribe">
-            <a className="footer-link" href="">
-              Subscribe
-            </a>
-          </Link>
-          {/* <Link href="/archives"><a className="footer-link" href="">Archives</a></Link> */}
-          <Link href="/advertising">
-            <a className="footer-link" href="">
-              Advertising
-            </a>
-          </Link>
-          <Link href="/login">
-            <a className="footer-link" href="">
-              Login
-            </a>
-          </Link>
+          <Link href="/subscribe">Subscribe</Link>
+          <Link href="/advertising">Advertising</Link>
+          <Link href="/login">Login</Link>
         </div>
         <div className="footer-section">
           <h2 className="footer-header">County Information</h2>
@@ -44,21 +31,9 @@ const Footer: React.FC = () => {
         </div>
         <div className="footer-section">
           <h2 className="footer-header">About</h2>
-          <Link href="/about">
-            <a className="footer-link" href="">
-              About Us
-            </a>
-          </Link>
-          <Link href="/contact">
-            <a className="footer-link" href="">
-              Contact Us
-            </a>
-          </Link>
-          <Link href="/privacy">
-            <a className="footer-link" href="">
-              Privacy Policy
-            </a>
-          </Link>
+          <Link href="/about">About Us</Link>
+          <Link href="/contact">Contact Us</Link>
+          <Link href="/privacy">Privacy Policy</Link>
         </div>
       </div>
       <div className="wrapper">

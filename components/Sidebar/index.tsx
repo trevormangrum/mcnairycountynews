@@ -47,11 +47,7 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
       )}
       <SectionHeader text="Subscribe" />
       <p>Subscribe to the McNairy County News!</p>
-      <Link href="/subscribe">
-        <a className="button" href="/advertising">
-          Subscribe
-        </a>
-      </Link>
+      <Link href="/subscribe">Subscribe</Link>
       {ads && ads.length > 2 ? (
         <Ad
           square={ads[2].square ? true : false}
@@ -66,11 +62,7 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
         Interested in advertising your business in our paper or on our website?
         Click the button below to learn more about our advertising rates.
       </p>
-      <Link href="/advertising">
-        <a className="button" href="/advertising">
-          Learn More
-        </a>
-      </Link>
+      <Link href="/advertising">Learn More</Link>
       {ads && ads.length > 3 ? (
         <Ad
           square={ads[3].square ? true : false}

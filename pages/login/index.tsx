@@ -27,9 +27,7 @@ export default function LoginPage() {
       <div className="wrapper">
         <form className="login-box" onSubmit={handleSubmit}>
           <h1>Admin Login</h1>
-          <Link href="/">
-            <a href="/">Go Back</a>
-          </Link>
+          <Link href="/">Go Back</Link>
           {loginError && (
             <p>
               There was an error with logging in. Please try again or contact
