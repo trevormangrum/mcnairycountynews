@@ -2,18 +2,37 @@ import React from "react";
 import Link from "next/link";
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
-      <div className="wrapper">
-        <div className="footer-section">
-          <h2 className="footer-header">McNairy County News</h2>
-          <Link href="/subscribe">Subscribe</Link>
-          <Link href="/advertising">Advertising</Link>
-          <Link href="/login">Login</Link>
+    <footer className="mt-auto w-full flex flex-col items-center text-white bg-secondary">
+      <div className="w-full max-w-screen-xl flex flex-row justify-evenly flex-wrap overflow-wrap">
+        <div className="flex flex-col items-start min-h-[300px]">
+          <h2 className="weight-400 uppercase text-2xl mt-2">
+            McNairy County News
+          </h2>
+          <Link
+            className="no-underline text-white brightness-75 my-1"
+            href="/subscribe"
+          >
+            Subscribe
+          </Link>
+          <Link
+            className="no-underline text-white brightness-75 my-1"
+            href="/advertising"
+          >
+            Advertising
+          </Link>
+          <Link
+            className="no-underline text-white brightness-75 my-1"
+            href="/login"
+          >
+            Login
+          </Link>
         </div>
-        <div className="footer-section">
-          <h2 className="footer-header">County Information</h2>
+        <div className="flex flex-col items-start min-h-[300px]">
+          <h2 className="weight-400 uppercase text-2xl mt-2">
+            County Information
+          </h2>
           <a
-            className="footer-link"
+            className="no-underline text-white brightness-75 my-1"
             target="_blank"
             rel="noopener"
             href="https://www.tnpublicnotice.com/"
@@ -21,7 +40,7 @@ const Footer: React.FC = () => {
             Public Notices
           </a>
           <a
-            className="footer-link"
+            className="no-underline text-white brightness-75 my-1"
             href="https://www.shackelfordfuneraldirectors.com/obituaries/"
             target="_blank"
             rel="noopener"
@@ -29,17 +48,35 @@ const Footer: React.FC = () => {
             Obituaries
           </a>
         </div>
-        <div className="footer-section">
-          <h2 className="footer-header">About</h2>
-          <Link href="/about">About Us</Link>
-          <Link href="/contact">Contact Us</Link>
-          <Link href="/privacy">Privacy Policy</Link>
+        <div className="flex flex-col items-start min-h-[300px]">
+          <h2 className="weight-400 text-2xl uppercase mt-2">About</h2>
+          <Link
+            className="no-underline text-white brightness-75 my-1"
+            href="/about"
+          >
+            About Us
+          </Link>
+          <Link
+            className="no-underline text-white brightness-75 my-1"
+            href="/contact"
+          >
+            Contact Us
+          </Link>
+          <Link
+            className="no-underline text-white brightness-75 my-1"
+            href="/privacy"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
-      <div className="wrapper">
-        <span>
+      <div className="max-w-screen-xl w-full flex flex-row justify-end items-center text-right self-center">
+        <span className="my-1">
           Website by{" "}
-          <a className="footer-link" href="https://mangrumtech.com">
+          <a
+            className="no-underline text-white brightness-75 my-1"
+            href="https://mangrumtech.com"
+          >
             Mangrum Tech
           </a>
         </span>
