@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="mt-auto w-full flex flex-col items-center text-white bg-secondary">
       <div className="w-full max-w-screen-xl flex flex-row justify-evenly flex-wrap overflow-wrap">
         <div className="flex flex-col items-start min-h-[300px]">
-          <h2 className="weight-400 uppercase text-2xl mt-2">
+          <h2 className="font-normal uppercase text-2xl mt-2">
             McNairy County News
           </h2>
           <Link
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
         <div className="flex flex-col items-start min-h-[300px]">
-          <h2 className="weight-400 uppercase text-2xl mt-2">
+          <h2 className="font-normal uppercase text-2xl mt-2">
             County Information
           </h2>
           <a
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <div className="flex flex-col items-start min-h-[300px]">
-          <h2 className="weight-400 text-2xl uppercase mt-2">About</h2>
+          <h2 className="font-normal text-2xl uppercase mt-2">About</h2>
           <Link
             className="no-underline text-white brightness-75 my-1"
             href="/about"

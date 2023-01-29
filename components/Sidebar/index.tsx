@@ -23,7 +23,7 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
   const ads: Advertisement[] =
     adData && randomizeAds(adData.adCollection.items.slice(0));
   return (
-    <aside className={`${"sidebar"} ${pageTitle ? "sidebar-margin" : ""}`}>
+    <aside className={`${"flex flex-col"} ${pageTitle ? "mt-[89px]" : ""}`}>
       {ads && ads.length > 0 ? (
         <Ad
           square={ads[0].square ? true : false}
@@ -46,7 +46,7 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
         <DigitalAdPlaceholder />
       )}
       <SectionHeader text="Subscribe" />
-      <p>Subscribe to the McNairy County News!</p>
+      <p className="text-text-primary">Subscribe to the McNairy County News!</p>
       <Link href="/subscribe">Subscribe</Link>
       {ads && ads.length > 2 ? (
         <Ad
@@ -58,7 +58,7 @@ const Sidebar: React.FC<Props> = ({ pageTitle }) => {
         <DigitalAdPlaceholder />
       )}
       <SectionHeader text="Advertising" />
-      <p>
+      <p className="text-text-primary">
         Interested in advertising your business in our paper or on our website?
         Click the button below to learn more about our advertising rates.
       </p>

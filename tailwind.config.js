@@ -15,6 +15,13 @@ module.exports = {
         "text-primary": "#535353",
         secondary: "#474747",
       },
+      gridTemplateColumns: {
+        layout: "0.6fr 0.4fr",
+      },
+      backgroundImage: {
+        ig:
+          "linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);",
+      },
     },
   },
   plugins: [],

@@ -9,6 +9,7 @@ import DigitalAdPlaceholder from "components/DigitalAdPlaceholder";
 import { Advertisement, Article } from "utils/types";
 import { randomizeAds } from "server/helpers/ads";
 import Ad from "components/Ad";
+import { useEffect } from "react";
 export default function Home() {
   const { loading, data, error } = useQuery(queries.articles.getTeasers, {
     client: client,
@@ -21,8 +22,8 @@ export default function Home() {
       variables: { prio: "2" },
     }
   );
-  const ads: Advertisement[] =
-    adData && randomizeAds(adData.adCollection.items.slice(0));
+  // const ads: Advertisement[] =
+  //   adData && randomizeAds(adData.adCollection.items.slice(0));
   return (
     <div>
       <Head>

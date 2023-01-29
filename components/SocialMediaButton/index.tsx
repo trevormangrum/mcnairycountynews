@@ -12,9 +12,10 @@ const SocialMediaButton: React.FC<Props> = ({ media }) => {
           target="_blank"
           rel="noopener"
           href="https://www.facebook.com/mcnairycountynews"
-          className="sm sm-fb"
+          className="w-full h-20 my-5 flex flex-col justify-center items-center mt-0 cursor-pointer
+        bg-[#4267b2]"
         >
-          <FaFacebook className="sm-icon" />
+          <FaFacebook className="text-3xl text-white " />
         </a>
       )}
       {media === "ig" && (
@@ -22,9 +23,9 @@ const SocialMediaButton: React.FC<Props> = ({ media }) => {
           target="_blank"
           rel="noopener"
           href="https://www.instagram.com/mcnairycountynews/"
-          className="sm sm-ig"
+          className="w-full h-20 my-5 flex flex-col justify-center items-center mt-0 cursor-pointer bg-ig"
         >
-          <FaInstagram className="sm-icon" />
+          <FaInstagram className="text-3xl text-white" />
         </a>
       )}
     </div>

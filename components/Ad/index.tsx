@@ -8,11 +8,17 @@ interface Props {
 const Ad: React.FC<Props> = ({ url, imageUrl, square }) => {
   return (
     <a
-      className={`digital-ad ${square ? "digital-ad-square" : ""}`}
+      className={`flex flex-col bg-[#eaeaea] w-full h-[200px]  ${
+        square ? "h-[464px]" : ""
+      }`}
       href={url ? url : "#"}
       target="_blank"
       rel="noopener"
-      style={{ background: `url(${imageUrl})` }}
+      style={{
+        background: `url(${imageUrl})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+      }}
     ></a>
   );
 };

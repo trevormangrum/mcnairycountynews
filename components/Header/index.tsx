@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
   return (
     <header className="flex flex-col z-1000">
-      <div className="fixed inset-0 h-auto w-full">
+      <div className="fixed inset-0 w-full h-fit">
         <nav className="hidden md:flex flex-row w-full justify-center bg-primary">
           <div className="w-full max-w-screen-xl flex flex-row justify-end items-center self-center text-right">
             <Link className="no-underline mx-5 my-0 text-white" href="/e-paper">
