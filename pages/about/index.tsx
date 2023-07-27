@@ -14,12 +14,16 @@ export default function AboutPage() {
         <title>About Us | McNairy County News</title>
         <meta
           name="description"
-            content='
-            Founded in 2008, the McNairy County News is truly a “county paper”. The employees take pride in publishing a weekly paper that highlights real happenings in McNairy and the surrounding counties.'
+          content="
+            Founded in 2008, the McNairy County News is truly a “county paper”. The employees take pride in publishing a weekly paper that highlights real happenings in McNairy and the surrounding counties."
         />
       </Head>
       <SectionHeader text="By McNairy Countians, For McNairy Countians" />
-      <img className="mcn-img" src="new_storefront.jpg" alt="McNairy County News" />
+      <img
+        className="mcn-img"
+        src="new_storefront.jpg"
+        alt="McNairy County News"
+      />
       <p>
         Founded in 2008, the McNairy County News is truly a “county paper”. The
         employees take pride in publishing a weekly paper that highlights real
@@ -51,28 +55,22 @@ export default function AboutPage() {
           email="suzanne@mcnairycountynews.com"
         />
         <Employee
-          name="Russell Ingle"
+          name="Drew Wheeler"
           email="news@mcnairycountynews.com"
-          image="russell.jpg"
-          position="Staff Writer/Reporter"
+          image="drew.jpg"
+          position="Editor"
         />
         <Employee
-          name="Joel Counce"
-          email="joel.counce@gmail.com"
+          name="Ashton Rich"
+          email="sports@mcnairycountynews.com"
           position="Sports Writer"
-          image="joel.JPG"
+          image="ashton.jpg"
         />
         <Employee
           name="Tom Evans"
           image="tom.JPG"
           position="Founder/Sports Writer"
           email="tom@mcnairycountynews.com"
-        />
-        <Employee
-          name="Jon King"
-          image="jon.jpg"
-          position="Advertising Sales"
-          email="ads@mcnairycountynews.com"
         />
       </div>
     </Layout>
