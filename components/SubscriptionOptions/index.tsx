@@ -22,11 +22,11 @@ const SubscriptionOptions: React.FC<Props> = ({ setValues }) => {
           <div className="sub-pricing">
             <div>
               <span>In county:</span>
-              <span>$30.00</span>
+              <span>$32.00</span>
             </div>
             <div>
               <span>Out of county:</span>
-              <span>$35.00</span>
+              <span>$40.00</span>
             </div>
           </div>
           <h3>Features</h3>

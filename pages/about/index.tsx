@@ -32,12 +32,11 @@ export default function AboutPage() {
         with machine and rack sales as well as subscriptions both in-county and
         the surrounding counties including all of West Tennessee. The McNairy
         County News Facebook page has the largest following of any weekly
-        newspaper in Tennessee with over 20,800 followers. The employees of the
+        newspaper in Tennessee with over 23,000 followers. The employees of the
         McNairy County News are all lifelong residents of the county with a
         multitude of talents that are an asset to the newspaper. Advertising
-        rates are the lowest in the area and with a wider format paper,
-        businesses get more ad space. Contact us today to see what we can do for
-        you.
+        rates are the lowest in the area. Contact us today to see what we can do
+        for you.
       </p>
       <SectionHeader text="Our Team" />
       <div className="employee-grid">

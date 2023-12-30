@@ -8,14 +8,14 @@ import urls from "utils/urls";
 interface IFormValues {
   subOption: string;
   dob?: string;
-  veteran?:  string; // Yes or No
+  veteran?: string; // Yes or No
   //Used to determine price if in state/out of state.
   state?: string;
   address?: string;
   zip?: string;
   gift?: string;
   renewal?: string;
-  submissionError?: boolean; 
+  submissionError?: boolean;
   [key: string]: string | boolean | null | undefined;
 }
 export default function SubscribePage() {
@@ -44,16 +44,20 @@ export default function SubscribePage() {
     if (values.submissionError) {
       delete values.submissionError;
     }
-    console.log(values)
-      //If there's a key in the values object that has no value, then we return and display an error.
-      if (!values["zip"] || !values["subOption"] || 
-          !values["dob"] || !values["veteran"] || 
-          !values["renewal"] ||
-          !values["gift"]) {
-          console.log("error");
-        setValues(values => ({ ...values, ["submissionError"]: true }));
-        return;
-      }
+    console.log(values);
+    //If there's a key in the values object that has no value, then we return and display an error.
+    if (
+      !values["zip"] ||
+      !values["subOption"] ||
+      !values["dob"] ||
+      !values["veteran"] ||
+      !values["renewal"] ||
+      !values["gift"]
+    ) {
+      console.log("error");
+      setValues(values => ({ ...values, ["submissionError"]: true }));
+      return;
+    }
     const response = await fetch("/api/subscribe", {
       method: "POST",
       body: JSON.stringify(values),
@@ -72,14 +76,20 @@ export default function SubscribePage() {
     <Layout options={options}>
       <Head>
         <title>Subscribe to McNairy County News | McNairy County News</title>
-        <meta name="description" content="McNairy County News offers physical and digital subscription services. Subscribe today to receive McNairy County News weekly! "/>
+        <meta
+          name="description"
+          content="McNairy County News offers physical and digital subscription services. Subscribe today to receive McNairy County News weekly! "
+        />
       </Head>
       <form>
         <SectionHeader text="Choose a Subscription" />
         <p>Please select a subscription type.</p>
         <SubscriptionOptions setValues={setValues} />
         <SectionHeader text="Discount Information" />
-        <p>Please fill out the fields below. You may qualify for a discount on your subscription.</p>
+        <p>
+          Please fill out the fields below. You may qualify for a discount on
+          your subscription.
+        </p>
         <InputGroup
           inputName="dob"
           inputType="date"
@@ -120,17 +130,40 @@ export default function SubscribePage() {
           value={values.zip}
           handleChange={handleChange}
         />
+        <p>
+          <b>NOTE:</b> If this is a gift, please enter the zip code of the
+          address the subscription will be sent to.
+        </p>
         <button type="submit" onClick={handleSubmit} className="button">
           Continue
         </button>
         {values.submissionError && (
-        <p>Error submitting form. Please ensure that all fields have been filled out.</p>
+          <p>
+            Error submitting form. Please ensure that all fields have been
+            filled out.
+          </p>
         )}
       </form>
       {token != "" && (
         <form method="POST" action={urls.authorizeSubscribe}>
           <SectionHeader text="Proceed to Payment" />
-          <p>Your subscription cost will be: ${subCost}. Clicking the button below will redirect you to the checkout screen, hosted by Authorize.Net. <b>NOTE: If you are purchasing as a gift, please enter the address of the gift recipient into the shipping address fields.</b></p>
+          <p>
+            <b>
+              DISCLAIMER: The price below includes a 3.5% upcharge for using a
+              credit/debit card.
+            </b>
+          </p>
+          <p>
+            Your subscription cost will be: <b>${subCost}</b>. Clicking the
+            button below will redirect you to the checkout screen, hosted by
+            Authorize.Net.{" "}
+          </p>
+          <p>
+            <b>
+              NOTE: If you are purchasing as a gift, please enter the address of
+              the gift recipient into the shipping address fields.
+            </b>
+          </p>
           <input type="hidden" name="token" value={token} />
           <button type="submit" className="button">
             Proceed to payment
