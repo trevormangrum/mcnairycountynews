@@ -4,7 +4,11 @@ export const calculateSubscriptionPrice = (
   subInfo: SubscriptionContactInfo
 ): string => {
   let cost: number = 0.0;
-  if (subInfo.subOption == "email") return "15.00";
+  if (subInfo.subOption == "email") {
+    //Before, this was return "15.00";
+    cost = 15 + 15 * 0.035;
+    return cost.toFixed(2);
+  }
   //At this point, we know that it is a standard subscription. So we need to check if they are in county or not for a base price.
   if (inCounty(subInfo)) {
     cost = 32;
